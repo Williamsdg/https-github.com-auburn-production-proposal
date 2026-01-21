@@ -93,6 +93,109 @@
         .benefits-list li { padding: 0.75rem 0; padding-left: 2rem; position: relative; color: var(--gray-700); }
         .benefits-list li::before { content: '✓'; position: absolute; left: 0; color: var(--auburn-orange); font-weight: 700; font-size: 1.1rem; }
 
+        .zone-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .zone-card {
+            background: var(--auburn-navy);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .zone-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .zone-card h3 { font-size: 0.9rem; margin-bottom: 0.25rem; color: var(--white); }
+        .zone-card p { font-size: 0.75rem; opacity: 0.85; color: var(--white); }
+
+        .deployment-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 1.5rem;
+        }
+
+        .deployment-section h3 {
+            color: var(--auburn-navy);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .location-item {
+            background: var(--gray-100);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            border-left: 3px solid var(--auburn-orange);
+        }
+
+        .location-item h4 {
+            color: var(--auburn-navy);
+            font-size: 0.9rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .location-item p {
+            color: var(--gray-600);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        .location-item .specs {
+            margin-top: 0.35rem;
+            font-size: 0.75rem;
+            color: var(--auburn-orange);
+            font-weight: 600;
+        }
+
+        .core-summary {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .core-summary h4 {
+            color: var(--auburn-navy);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .core-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .core-stat {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .core-stat-number {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--auburn-orange);
+        }
+
+        .core-stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+
         .footer { background: var(--auburn-navy); color: var(--white); padding: 2rem; text-align: center; }
         .footer a { color: var(--auburn-orange); text-decoration: none; }
 
@@ -100,6 +203,9 @@
             .features-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2rem; }
             .arch-layer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+            .zone-grid { grid-template-columns: repeat(2, 1fr); }
+            .location-list { grid-template-columns: 1fr; }
+            .core-stats { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -195,6 +301,236 @@
                 <div class="feature-card">
                     <h3>Scripting & Automation</h3>
                     <p>Lua scripting enables complex automation, integrations, and custom behaviors without external systems.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Campus Deployment Zones</h2>
+            <p>Based on Auburn's campus layout and traffic patterns, we've identified eight primary zones for Q-SYS audio and digital signage deployment.</p>
+            <div class="zone-grid">
+                <div class="zone-card">
+                    <div class="icon">🐅</div>
+                    <h3>Tiger Walk Corridor</h3>
+                    <p>Donahue Drive to Stadium</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🏛️</div>
+                    <h3>Samford & Ross Square</h3>
+                    <p>Central campus landmark</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🎪</div>
+                    <h3>Intramural Fields</h3>
+                    <p>Primary tailgate area</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">📚</div>
+                    <h3>Haley Concourse</h3>
+                    <p>Main pedestrian artery</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🅿️</div>
+                    <h3>Premium Parking</h3>
+                    <p>PC-1, PC-2, PC-4 lots</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🎭</div>
+                    <h3>Plainsman Park</h3>
+                    <p>Tailgate suites area</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🚌</div>
+                    <h3>Transit Hubs</h3>
+                    <p>War Eagle Way & shuttles</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🌳</div>
+                    <h3>Campus Greens</h3>
+                    <p>Quads & gathering spaces</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Speaker & Signage Deployment</h2>
+            <p>Strategic placement ensures complete audio coverage for announcements, music, and emergency notifications across all zones.</p>
+
+            <div class="deployment-section">
+                <h3>Zone 1: Tiger Walk Corridor</h3>
+                <div class="location-list">
+                    <div class="location-item">
+                        <h4>Athletic Complex Entry</h4>
+                        <p>Team departure point</p>
+                        <div class="specs">4x Column Array Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Donahue Drive</h4>
+                        <p>Full walkway coverage</p>
+                        <div class="specs">16x Weatherproof Speakers @ 150ft intervals</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Stadium Entry Plaza</h4>
+                        <p>High-density crowd area</p>
+                        <div class="specs">6x Column Array Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Tiger Walk Digital Signs</h4>
+                        <p>Real-time event info</p>
+                        <div class="specs">4x Outdoor LED Displays</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deployment-section">
+                <h3>Zone 2: Samford Lawn & Ross Square</h3>
+                <div class="location-list">
+                    <div class="location-item">
+                        <h4>Samford Hall Perimeter</h4>
+                        <p>Iconic campus centerpiece</p>
+                        <div class="specs">6x Landscape Speakers (concealed)</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Ross Square</h4>
+                        <p>Premium tailgate/parking</p>
+                        <div class="specs">4x Pole-Mount Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Samford Park Green</h4>
+                        <p>Open lawn gathering</p>
+                        <div class="specs">4x Directional Horn Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>College Street Entry</h4>
+                        <p>Primary vehicle entrance</p>
+                        <div class="specs">2x Speakers + Digital Sign</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deployment-section">
+                <h3>Zone 3: Intramural Fields & Tailgate Areas</h3>
+                <div class="location-list">
+                    <div class="location-item">
+                        <h4>Intramural Field Perimeter</h4>
+                        <p>Free parking/tailgate area</p>
+                        <div class="specs">12x Pole-Mount Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Hayfield Lot</h4>
+                        <p>Remote parking with shuttle</p>
+                        <div class="specs">4x Speakers + Info Display</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Wire Road Entrance</h4>
+                        <p>CDV and parking approach</p>
+                        <div class="specs">2x Entry Announcement Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Tailgate Info Kiosks</h4>
+                        <p>Wayfinding & schedules</p>
+                        <div class="specs">3x Outdoor Digital Signs</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deployment-section">
+                <h3>Zone 4: Haley Concourse & Academic Core</h3>
+                <div class="location-list">
+                    <div class="location-item">
+                        <h4>Haley Center Entries</h4>
+                        <p>North & South pedestrian crossings</p>
+                        <div class="specs">8x Column Array Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>RBD Library Plaza</h4>
+                        <p>High-traffic gathering area</p>
+                        <div class="specs">4x Landscape Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Thach Concourse</h4>
+                        <p>Historic building walkway</p>
+                        <div class="specs">4x Building-Mount Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Academic Core Signs</h4>
+                        <p>Event & emergency info</p>
+                        <div class="specs">2x Outdoor Digital Displays</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deployment-section">
+                <h3>Zone 5: Premium Parking & Stadium Perimeter</h3>
+                <div class="location-list">
+                    <div class="location-item">
+                        <h4>Coliseum Lot (PC-1)</h4>
+                        <p>Reserved donor parking</p>
+                        <div class="specs">6x Pole-Mount + 2x Digital Signs</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Arena Lot (PC-2)</h4>
+                        <p>Adjacent to Auburn Arena</p>
+                        <div class="specs">4x Pole-Mount Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Magnolia/Donahue Lot</h4>
+                        <p>Stadium-adjacent premium</p>
+                        <div class="specs">6x Pole-Mount Speakers</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>West Village Lot (PC-4)</h4>
+                        <p>West campus parking</p>
+                        <div class="specs">4x Speakers + Info Display</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deployment-section">
+                <h3>Zone 6: Tiger Transit & Remote Locations</h3>
+                <div class="location-list">
+                    <div class="location-item">
+                        <h4>War Eagle Way Hub</h4>
+                        <p>Primary shuttle pickup at Nichols Center</p>
+                        <div class="specs">4x Speakers + Shuttle Display</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>Gogue Performing Arts Lot</h4>
+                        <p>Remote parking with shuttle</p>
+                        <div class="specs">2x Speakers + Info Kiosk</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>VCOM Parking Deck</h4>
+                        <p>Medical district shuttle point</p>
+                        <div class="specs">2x Speakers + Digital Sign</div>
+                    </div>
+                    <div class="location-item">
+                        <h4>OIT Deck Area</h4>
+                        <p>Technology campus access</p>
+                        <div class="specs">2x Speakers + Info Display</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="core-summary">
+                <h4>Q-SYS Outdoor Infrastructure Summary</h4>
+                <div class="core-stats">
+                    <div class="core-stat">
+                        <div class="core-stat-number">110+</div>
+                        <div class="core-stat-label">Outdoor Speakers</div>
+                    </div>
+                    <div class="core-stat">
+                        <div class="core-stat-number">18+</div>
+                        <div class="core-stat-label">Digital Signs</div>
+                    </div>
+                    <div class="core-stat">
+                        <div class="core-stat-number">8</div>
+                        <div class="core-stat-label">Campus Zones</div>
+                    </div>
+                    <div class="core-stat">
+                        <div class="core-stat-number">1</div>
+                        <div class="core-stat-label">Unified Platform</div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Campus Interface - Auburn University Production Enhancement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --auburn-navy: #03244d;
+            --auburn-orange: #DD550C;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: var(--gray-800); background: var(--gray-50); }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; background: var(--white); padding: 1rem 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+        .nav-logo img { height: 45px; }
+        .nav-logo-text { display: flex; flex-direction: column; }
+        .nav-logo-title { font-weight: 700; font-size: 1.1rem; color: var(--auburn-navy); line-height: 1.2; }
+        .nav-logo-subtitle { font-size: 0.7rem; color: var(--auburn-orange); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--auburn-orange); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .back-link:hover { color: var(--auburn-navy); }
+
+        .hero { background: linear-gradient(135deg, var(--auburn-navy) 0%, rgba(3,36,77,0.9) 100%); color: var(--white); padding: 8rem 2rem 4rem; text-align: center; }
+        .hero-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+        .content { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 { font-size: 1.75rem; color: var(--auburn-navy); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--auburn-orange); display: inline-block; }
+        .section h3.subsection { font-size: 1.3rem; color: var(--auburn-navy); margin: 2rem 0 1rem; }
+        .section p { color: var(--gray-700); margin-bottom: 1rem; font-size: 1.05rem; }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .column-header {
+            background: var(--auburn-navy);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .column-header .icon { font-size: 1.5rem; }
+        .column-header h3 { font-size: 1.1rem; margin: 0; color: var(--white); }
+
+        .column-content {
+            background: var(--white);
+            border-radius: 0 0 12px 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+        .feature-card { background: var(--white); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid var(--auburn-orange); }
+        .feature-card h3 { color: var(--auburn-navy); font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--gray-600); font-size: 0.9rem; margin-bottom: 0; }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .button-example {
+            background: var(--auburn-navy);
+            color: var(--white);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .button-example .icon { font-size: 1.5rem; margin-bottom: 0.25rem; }
+        .button-example .label { font-weight: 600; font-size: 0.75rem; }
+
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .application-card {
+            background: var(--auburn-navy);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .application-card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .application-card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--white); }
+        .application-card p { font-size: 0.85rem; opacity: 0.85; color: var(--white); }
+
+        .product-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 1.5rem;
+        }
+
+        .product-section h3 {
+            color: var(--auburn-navy);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-section .subtitle {
+            color: var(--auburn-orange);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .product-item {
+            background: var(--gray-100);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+        }
+
+        .product-item h4 {
+            color: var(--auburn-navy);
+            font-size: 0.9rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .product-item .model {
+            color: var(--auburn-orange);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-item p {
+            color: var(--gray-600);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        .location-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 1rem;
+        }
+
+        .location-section h3 {
+            color: var(--auburn-navy);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+
+        .location-item {
+            background: var(--gray-100);
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            border-left: 3px solid var(--auburn-orange);
+        }
+
+        .location-item h4 {
+            color: var(--auburn-navy);
+            font-size: 0.8rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .location-item p {
+            color: var(--gray-600);
+            font-size: 0.7rem;
+            margin: 0;
+        }
+
+        .benefits-list { list-style: none; margin-top: 1rem; }
+        .benefits-list li { padding: 0.75rem 0; padding-left: 2rem; position: relative; color: var(--gray-700); }
+        .benefits-list li::before { content: '✓'; position: absolute; left: 0; color: var(--auburn-orange); font-weight: 700; font-size: 1.1rem; }
+
+        .summary-stats {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .summary-stats h4 {
+            color: var(--auburn-navy);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--auburn-orange);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+
+        .footer { background: var(--auburn-navy); color: var(--white); padding: 2rem; text-align: center; }
+        .footer a { color: var(--auburn-orange); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .two-column, .features-grid, .product-grid, .application-grid { grid-template-columns: 1fr; }
+            .button-grid, .location-list { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Auburn_Tigers_logo.svg/1200px-Auburn_Tigers_logo.svg.png" alt="Auburn Tigers">
+                <div class="nav-logo-text">
+                    <span class="nav-logo-title">Production Enhancement</span>
+                    <span class="nav-logo-subtitle">Proposal 2026</span>
+                </div>
+            </a>
+            <a href="index.html#solutions" class="back-link">← Back to Solutions</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-icon">🎛️</div>
+        <h1>Smart Campus Interface</h1>
+        <p>Unified control surfaces for classrooms and campus-wide digital signage for visual communication, wayfinding, and emergency alerts.</p>
+    </section>
+
+    <div class="content">
+        <div class="section">
+            <h2>Overview</h2>
+            <p>Smart Campus Interface combines two essential components: intuitive classroom control through Stream Deck devices and campus-wide digital signage for visual communication. Together, they create a cohesive system that simplifies technology use for faculty while keeping students, visitors, and fans informed across campus.</p>
+            <p>Both systems integrate with Q-SYS for centralized management, enabling IT staff to push updates, monitor status, and respond to issues from anywhere.</p>
+        </div>
+
+        <!-- Two-Column Overview -->
+        <div class="two-column">
+            <div>
+                <div class="column-header">
+                    <span class="icon">🎛️</span>
+                    <h3>Classroom Control</h3>
+                </div>
+                <div class="column-content">
+                    <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">Stream Deck devices provide one-touch control for recording, displays, lighting, and AV systems in every equipped classroom.</p>
+                    <div class="button-grid">
+                        <div class="button-example">
+                            <div class="icon">⏺️</div>
+                            <div class="label">Record</div>
+                        </div>
+                        <div class="button-example">
+                            <div class="icon">🖥️</div>
+                            <div class="label">Display</div>
+                        </div>
+                        <div class="button-example">
+                            <div class="icon">💡</div>
+                            <div class="label">Lights</div>
+                        </div>
+                        <div class="button-example">
+                            <div class="icon">📹</div>
+                            <div class="label">Camera</div>
+                        </div>
+                        <div class="button-example">
+                            <div class="icon">🔊</div>
+                            <div class="label">Volume</div>
+                        </div>
+                        <div class="button-example">
+                            <div class="icon">🆘</div>
+                            <div class="label">Help</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="column-header">
+                    <span class="icon">📺</span>
+                    <h3>Digital Signage</h3>
+                </div>
+                <div class="column-content">
+                    <p style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1rem;">Indoor and outdoor displays deliver real-time information, wayfinding, emergency alerts, and Auburn branding across campus.</p>
+                    <div class="button-grid">
+                        <div class="button-example">
+                            <div class="icon">📅</div>
+                            <div class="label">Schedules</div>
+                        </div>
+                        <div class="button-example">
+                            <div class="icon">🗺️</div>
+                            <div class="label">Wayfinding</div>
+                        </div>
+                        <div class="button-example">
+                            <div class="icon">🚨</div>
+                            <div class="label">Alerts</div>
+                        </div>
+                        <div class="button-example">
+                            <div class="icon">🅿️</div>
+                            <div class="label">Parking</div>
+                        </div>
+                        <div class="button-example">
+                            <div class="icon">🏆</div>
+                            <div class="label">Athletics</div>
+                        </div>
+                        <div class="button-example">
+                            <div class="icon">🍽️</div>
+                            <div class="label">Dining</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Classroom Control Section -->
+        <div class="section">
+            <h2>Classroom Control Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>One-Touch Recording</h3>
+                    <p>Start and stop lecture recording with a single button press. Visual confirmation shows recording status at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Preset Lighting Scenes</h3>
+                    <p>Switch between presentation mode, discussion mode, and video playback lighting with dedicated buttons.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Video Conferencing</h3>
+                    <p>Quick-launch Zoom, Teams, or other platforms with pre-configured room settings already applied.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Integrated Help Request</h3>
+                    <p>One button sends an alert to IT/AV support with room information, enabling rapid response to issues.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Source Selection</h3>
+                    <p>Easily switch between laptop, document camera, and room PC inputs without navigating complex menus.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Remote Updates</h3>
+                    <p>IT staff can push button configuration changes to all devices campus-wide without visiting each room.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Digital Signage Section -->
+        <div class="section">
+            <h2>Digital Signage Applications</h2>
+            <div class="application-grid">
+                <div class="application-card">
+                    <div class="icon">🎓</div>
+                    <h3>Academic Buildings</h3>
+                    <p>Room schedules, events, department news, emergency alerts</p>
+                </div>
+                <div class="application-card">
+                    <div class="icon">🏟️</div>
+                    <h3>Gameday Info</h3>
+                    <p>Parking availability, shuttle ETAs, scores, crowd flow</p>
+                </div>
+                <div class="application-card">
+                    <div class="icon">🍽️</div>
+                    <h3>Dining & Student Life</h3>
+                    <p>Menus, wait times, campus events, announcements</p>
+                </div>
+                <div class="application-card">
+                    <div class="icon">🚶</div>
+                    <h3>Wayfinding</h3>
+                    <p>Interactive maps, building directories, visitor guidance</p>
+                </div>
+                <div class="application-card">
+                    <div class="icon">🚨</div>
+                    <h3>Emergency Alerts</h3>
+                    <p>Instant campus-wide notifications with visual alerts</p>
+                </div>
+                <div class="application-card">
+                    <div class="icon">🏆</div>
+                    <h3>Athletics & Brand</h3>
+                    <p>Scores, schedules, achievements, Auburn spirit</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended Display Systems -->
+        <div class="section">
+            <h2>Recommended Display Systems</h2>
+
+            <div class="product-section">
+                <h3>Indoor Displays</h3>
+                <div class="subtitle">For lobbies, hallways, and common areas</div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <h4>Samsung QMR Series</h4>
+                        <div class="model">QM55R / QM65R / QM75R</div>
+                        <p>Commercial-grade 4K displays, 500 nit, 24/7 rated</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>LG UH5F Series</h4>
+                        <div class="model">55UH5F-H / 65UH5F-H</div>
+                        <p>Ultra-slim professional displays with webOS</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>Samsung QHR (High Bright)</h4>
+                        <div class="model">QH55R / QH65R</div>
+                        <p>700 nit for areas with significant ambient light</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>LG Stretch Displays</h4>
+                        <div class="model">86BH5F / 88BH7F</div>
+                        <p>Ultra-wide bar-type for tickers and wayfinding</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-section">
+                <h3>Outdoor Displays</h3>
+                <div class="subtitle">Weatherproof solutions for campus grounds and gameday</div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <h4>Samsung OH Series</h4>
+                        <div class="model">OH55F / OH75F</div>
+                        <p>2,500-4,000 nit, IP56 rated, -30°C to 50°C</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>LG XE4F Outdoor</h4>
+                        <div class="model">55XE4F / 75XE4F</div>
+                        <p>4,000 nit with IK10 impact resistance</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>Daktronics LED</h4>
+                        <div class="model">Galaxy Series</div>
+                        <p>Large-format outdoor LED, direct sunlight visible</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>SNA Displays LED</h4>
+                        <div class="model">EMPIRE Series</div>
+                        <p>High-resolution outdoor LED, 2.5mm-10mm pitch</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-section">
+                <h3>Interactive & Specialty</h3>
+                <div class="subtitle">Touch-enabled and specialty form factors</div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <h4>Samsung Kiosk</h4>
+                        <div class="model">KM24A / KM24C</div>
+                        <p>All-in-one interactive kiosk with touch display</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>LG Touch Overlay</h4>
+                        <div class="model">KT-T Series (55"-86")</div>
+                        <p>Multi-touch for interactive wayfinding</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>Samsung The Wall</h4>
+                        <div class="model">IWA Series MicroLED</div>
+                        <p>Premium modular MicroLED for flagship spaces</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>LG Transparent OLED</h4>
+                        <div class="model">55EW5G-A</div>
+                        <p>See-through display for trophy cases, exhibits</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deployment Locations -->
+        <div class="section">
+            <h2>Campus Deployment</h2>
+
+            <div class="location-section">
+                <h3>Academic & Administrative Buildings</h3>
+                <div class="location-list">
+                    <div class="location-item">
+                        <h4>Haley Center</h4>
+                        <p>Lobby + hallway directories</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>RBD Library</h4>
+                        <p>Entry screens + study info</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Samford Hall</h4>
+                        <p>Visitor welcome display</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Student Center</h4>
+                        <p>Events + dining menus</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Shelby Center</h4>
+                        <p>Engineering news + schedules</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>College of Education</h4>
+                        <p>Department info + rooms</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-section">
+                <h3>Athletic & Outdoor Facilities</h3>
+                <div class="location-list">
+                    <div class="location-item">
+                        <h4>Athletic Complex</h4>
+                        <p>Achievements + schedules</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Auburn Arena</h4>
+                        <p>Concourse + wayfinding</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Tiger Walk Corridor</h4>
+                        <p>4x outdoor LED displays</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Samford Lawn</h4>
+                        <p>Event plaza large-format</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Coliseum Lot</h4>
+                        <p>Parking + info displays</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>War Eagle Way</h4>
+                        <p>Shuttle info + wayfinding</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="section">
+            <h2>Benefits</h2>
+            <ul class="benefits-list">
+                <li>Dramatically reduces technology learning curve for faculty</li>
+                <li>Consistent, professional Auburn branding across all displays</li>
+                <li>Real-time information reduces confusion and improves navigation</li>
+                <li>Emergency alerts reach everyone on campus within seconds</li>
+                <li>Visual LCD buttons provide clear feedback on system status</li>
+                <li>Reduces printed materials and static signage costs</li>
+                <li>Enhances gameday experience with live parking and shuttle info</li>
+                <li>Revenue potential through sponsored content and advertising</li>
+                <li>Centralized management reduces IT support burden</li>
+            </ul>
+
+            <div class="summary-stats">
+                <h4>Smart Campus Interface Summary</h4>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Classrooms</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">75+</div>
+                        <div class="stat-label">Indoor Displays</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">18+</div>
+                        <div class="stat-label">Outdoor Displays</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Interactive Kiosks</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Unified CMS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integration -->
+        <div class="section">
+            <h2>Integration</h2>
+            <p>Both classroom control and digital signage connect to the Q-SYS ecosystem for centralized management. Stream Deck buttons trigger complex automation sequences while appearing simple to faculty. Digital signage content can be synchronized with audio announcements and automatically switches to emergency mode when alerts are triggered. The unified content management system integrates with Auburn's room scheduling, transit tracking, and event management systems.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><a href="index.html">← Return to Main Proposal</a></p>
+    </footer>
+</body>
+</html>

@@ -49,14 +49,14 @@
         .feature-card h3 { color: var(--auburn-navy); font-size: 1.1rem; margin-bottom: 0.5rem; }
         .feature-card p { color: var(--gray-600); font-size: 0.9rem; margin-bottom: 0; }
 
-        .zone-grid {
+        .experience-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
 
-        .zone-card {
+        .experience-card {
             background: var(--auburn-navy);
             color: var(--white);
             border-radius: 12px;
@@ -64,19 +64,31 @@
             text-align: center;
         }
 
-        .zone-card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-        .zone-card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--white); }
-        .zone-card p { font-size: 0.85rem; opacity: 0.85; color: var(--white); }
+        .experience-card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .experience-card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--white); }
+        .experience-card p { font-size: 0.85rem; opacity: 0.85; color: var(--white); }
 
         .benefits-list { list-style: none; margin-top: 1rem; }
         .benefits-list li { padding: 0.75rem 0; padding-left: 2rem; position: relative; color: var(--gray-700); }
         .benefits-list li::before { content: '✓'; position: absolute; left: 0; color: var(--auburn-orange); font-weight: 700; font-size: 1.1rem; }
 
+        .cta-box {
+            background: var(--auburn-orange);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .cta-box p { color: var(--white); margin-bottom: 0.5rem; }
+        .cta-box a { color: var(--white); font-weight: 600; text-decoration: underline; }
+
         .footer { background: var(--auburn-navy); color: var(--white); padding: 2rem; text-align: center; }
         .footer a { color: var(--auburn-orange); text-decoration: none; }
 
         @media (max-width: 768px) {
-            .features-grid, .zone-grid { grid-template-columns: 1fr; }
+            .features-grid, .experience-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2rem; }
         }
     </style>
@@ -109,67 +121,67 @@
         </div>
 
         <div class="section">
-            <h2>Campus Zones</h2>
-            <div class="zone-grid">
-                <div class="zone-card">
-                    <div class="icon">🎪</div>
-                    <h3>Tailgate Areas</h3>
-                    <p>Enhanced connectivity and audio coverage for fan gatherings</p>
+            <h2>Fan Experience Enhancements</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="icon">🐅</div>
+                    <h3>Tiger Walk Atmosphere</h3>
+                    <p>Synchronized audio along the entire route from Athletic Complex to the stadium</p>
                 </div>
-                <div class="zone-card">
-                    <div class="icon">🚶</div>
-                    <h3>Fan Walkways</h3>
-                    <p>Digital signage and wayfinding along major pedestrian routes</p>
+                <div class="experience-card">
+                    <div class="icon">🎵</div>
+                    <h3>Campus-Wide Audio</h3>
+                    <p>Fight songs and announcements heard across tailgate areas and walkways</p>
                 </div>
-                <div class="zone-card">
-                    <div class="icon">🏛️</div>
-                    <h3>Campus Green</h3>
-                    <p>Outdoor audio for pre-game events and announcements</p>
+                <div class="experience-card">
+                    <div class="icon">📺</div>
+                    <h3>Live Game Updates</h3>
+                    <p>Digital signage showing scores, highlights, and real-time information</p>
                 </div>
-                <div class="zone-card">
+                <div class="experience-card">
                     <div class="icon">🅿️</div>
-                    <h3>Parking Areas</h3>
-                    <p>Information displays and emergency notification systems</p>
+                    <h3>Parking Guidance</h3>
+                    <p>Real-time availability displays reduce congestion and search time</p>
                 </div>
-                <div class="zone-card">
-                    <div class="icon">🎭</div>
-                    <h3>Event Plazas</h3>
-                    <p>Flexible AV infrastructure for concerts and gatherings</p>
+                <div class="experience-card">
+                    <div class="icon">🚌</div>
+                    <h3>Shuttle Information</h3>
+                    <p>Live ETAs and route status at Tiger Transit pickup locations</p>
                 </div>
-                <div class="zone-card">
-                    <div class="icon">🚪</div>
-                    <h3>Entry Points</h3>
-                    <p>Welcome messaging and crowd flow information</p>
+                <div class="experience-card">
+                    <div class="icon">🚨</div>
+                    <h3>Safety Alerts</h3>
+                    <p>Campus-wide emergency notification capability for 100,000+ fans</p>
                 </div>
             </div>
         </div>
 
         <div class="section">
-            <h2>Key Features</h2>
+            <h2>Key Capabilities</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3>Outdoor Audio Distribution</h3>
-                    <p>Weather-resistant speaker systems deliver synchronized audio across campus, from fight songs to important announcements.</p>
+                    <h3>Synchronized Campus Audio</h3>
+                    <p>All outdoor speakers play in perfect sync—War Eagle heard simultaneously from Samford to the Stadium.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Digital Signage Network</h3>
-                    <p>High-brightness outdoor displays show game updates, wayfinding information, and emergency alerts.</p>
+                    <h3>Zone-Based Control</h3>
+                    <p>Independent volume and content control per area. Quieter at tailgates, full volume on Tiger Walk.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Enhanced WiFi Coverage</h3>
-                    <p>Extended wireless connectivity in tailgate zones and gathering areas supports fan connectivity.</p>
+                    <h3>Event Scheduling</h3>
+                    <p>Pre-programmed gameday sequences: 4-hour pregame, Tiger Walk hype, kickoff countdown, postgame.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Event Coordination</h3>
-                    <p>Centralized control enables staff to manage audio and displays across all zones from a single location.</p>
+                    <h3>Emergency Override</h3>
+                    <p>One-button campus-wide alert capability integrates with Auburn Emergency Management systems.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Emergency Notification</h3>
-                    <p>Mass notification capability reaches fans across the entire campus footprint instantly.</p>
+                    <h3>Remote Content Management</h3>
+                    <p>Update digital signage content from anywhere. Push announcements instantly to all displays.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>Flexible Infrastructure</h3>
-                    <p>Power and network drops support pop-up activations, vendor setups, and special events.</p>
+                    <h3>Non-Gameday Use</h3>
+                    <p>Same infrastructure supports concerts, graduation, campus events, and daily announcements.</p>
                 </div>
             </div>
         </div>
@@ -190,7 +202,11 @@
 
         <div class="section">
             <h2>Integration</h2>
-            <p>All outdoor systems connect to the campus Q-SYS network, enabling unified control and monitoring. Content can be managed remotely, and the system integrates with university emergency management for coordinated campus-wide alerts. The same infrastructure supports non-gameday events like concerts, graduation ceremonies, and community gatherings.</p>
+            <p>All outdoor systems connect to the campus Q-SYS network, enabling unified control and monitoring. Content can be managed remotely, and the system integrates with university emergency management for coordinated campus-wide alerts.</p>
+            <div class="cta-box">
+                <p>For detailed speaker locations and zone deployment plans, see:</p>
+                <a href="qsys-ecosystem.html">Q-SYS Ecosystem → Campus Deployment Zones</a>
+            </div>
         </div>
     </div>
 
