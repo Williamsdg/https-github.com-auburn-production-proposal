@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auburn University Production Enhancement Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Official Auburn University Colors */
+            --auburn-navy: #03244d;
+            --auburn-orange: #DD550C;
+            --auburn-orange-hover: #E86A1E;
+            --auburn-burnt-orange: #A0522D;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--gray-50);
+        }
+
+        /* Top Header Bar */
+        .top-bar {
+            background: var(--auburn-navy);
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .top-bar-left {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .top-bar-right a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .top-bar-right a:hover {
+            color: var(--auburn-orange);
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            background: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo img {
+            height: 50px;
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-logo-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--auburn-navy);
+            line-height: 1.2;
+        }
+
+        .nav-logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--auburn-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--auburn-orange);
+            color: var(--white);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--auburn-navy);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://www.auburn.edu/main/welcome/images/samford-summer-2400.jpg') center/cover no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(3,36,77,0.92) 0%, rgba(3,36,77,0.85) 50%, rgba(221,85,12,0.8) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+            max-width: 1000px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--auburn-orange);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--auburn-orange);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Tab Navigation */
+        .tab-section {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 82px;
+            z-index: 999;
+        }
+
+        .tab-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .tab-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            padding: 1.25rem 2rem;
+            border: none;
+            background: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            cursor: pointer;
+            white-space: nowrap;
+            position: relative;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--auburn-orange);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .tab-btn:hover {
+            color: var(--auburn-navy);
+            background: var(--gray-50);
+        }
+
+        .tab-btn.active {
+            color: var(--auburn-orange);
+        }
+
+        .tab-btn.active::after {
+            transform: scaleX(1);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Layouts */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-full {
+            max-width: none;
+            padding: 5rem 0;
+        }
+
+        .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--auburn-navy);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-header-light h2 {
+            color: var(--white);
+        }
+
+        .section-header-light p {
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* Category Banner */
+        .category-banner {
+            position: relative;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .category-banner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(3,36,77,0.95) 0%, rgba(3,36,77,0.7) 50%, rgba(3,36,77,0.4) 100%);
+        }
+
+        .category-banner-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem 4rem;
+            max-width: 700px;
+        }
+
+        .category-banner h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .category-banner p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 1px solid var(--gray-200);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .feature-card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(transparent, rgba(3,36,77,0.8));
+        }
+
+        .feature-card-icon {
+            position: absolute;
+            bottom: 1rem;
+            left: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: var(--auburn-orange);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 1;
+        }
+
+        .feature-card-body {
+            padding: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.75rem;
+            position: relative;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--auburn-orange);
+            font-weight: 700;
+        }
+
+        /* Info Boxes */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-box {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid var(--auburn-orange);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .info-box h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .info-box p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        /* Tech Specs Table */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .tech-table th {
+            background: var(--auburn-navy);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tech-table td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--gray-700);
+        }
+
+        .tech-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tech-table tr:hover td {
+            background: var(--gray-50);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--auburn-orange) 0%, var(--auburn-navy) 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+            padding-right: 3rem;
+            padding-left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            padding-left: 3rem;
+        }
+
+        .timeline-content {
+            width: 50%;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: var(--auburn-orange);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .timeline-phase {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--auburn-orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.2rem;
+            color: var(--auburn-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* Budget Section */
+        .budget-section {
+            background: var(--auburn-navy);
+            color: var(--white);
+        }
+
+        .budget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .budget-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .budget-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--auburn-orange);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .budget-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.875rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .budget-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--auburn-orange);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--auburn-orange);
+        }
+
+        /* Image Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent 50%, rgba(3,36,77,0.7));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: auto;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: var(--gray-100);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .partner-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .partner-card h4 {
+            font-size: 1.1rem;
+            color: var(--auburn-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .partner-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--auburn-orange) 0%, var(--auburn-burnt-orange) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--auburn-orange);
+        }
+
+        .btn-white:hover {
+            background: var(--auburn-navy);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .btn-orange {
+            background: var(--auburn-orange);
+            color: var(--white);
+        }
+
+        .btn-orange:hover {
+            background: var(--auburn-orange-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--auburn-orange);
+        }
+
+        .footer-brand p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--auburn-orange);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-800);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: var(--gray-500);
+            font-size: 0.85rem;
+        }
+
+        .footer-tagline {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--auburn-orange);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .hero-stat-number {
+                font-size: 2rem;
+            }
+
+            .tab-btn {
+                padding: 1rem 1.25rem;
+                font-size: 0.85rem;
+            }
+
+            .category-banner {
+                height: 280px;
+            }
+
+            .category-banner-content {
+                padding: 2rem;
+            }
+
+            .category-banner h2 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: row;
+            }
+
+            .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px;
+                text-align: left;
+                padding: 1.5rem;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .timeline-marker {
+                left: 20px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 2;
+                grid-row: span 1;
+                height: 200px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            Comprehensive AV/IT Infrastructure Modernization Initiative
+        </div>
+        <div class="top-bar-right">
+            <a href="#budget">Budget Overview</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Auburn_Tigers_logo.svg/1200px-Auburn_Tigers_logo.svg.png" alt="Auburn Tigers">
+                <div class="nav-logo-text">
+                    <span class="nav-logo-title">Production Enhancement</span>
+                    <span class="nav-logo-subtitle">Proposal 2026</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#budget">Budget</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Proposed Initiative 2026</div>
+            <h1>Campus Production Enhancement</h1>
+            <p>Transforming Auburn University into a state-of-the-art environment for gameday operations, classroom instruction, and campus-wide media production.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5</div>
+                    <div class="hero-stat-label">Enhancement Areas</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">60%</div>
+                    <div class="hero-stat-label">Setup Time Reduction</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">40%</div>
+                    <div class="hero-stat-label">Support Ticket Reduction</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">24</div>
+                    <div class="hero-stat-label">Month Rollout</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab Navigation -->
+    <section class="tab-section" id="solutions">
+        <div class="tab-container">
+            <div class="tab-nav">
+                <button class="tab-btn active" data-tab="classroom">Classroom Enhancements</button>
+                <button class="tab-btn" data-tab="common">Common Grounds</button>
+                <button class="tab-btn" data-tab="gameday">Gameday Environment</button>
+                <button class="tab-btn" data-tab="infrastructure">Campus Infrastructure</button>
+                <button class="tab-btn" data-tab="analytics">Analytics & Tracking</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab Content: Classroom Enhancements -->
+    <div class="tab-content active" id="tab-classroom">
+        <div class="category-banner">
+            <div class="category-banner-bg" style="background-image: url('https://www.auburn.edu/academic/provost/undergraduate-studies/images/classroom-students-professor.jpg');"></div>
+            <div class="category-banner-overlay"></div>
+            <div class="category-banner-content">
+                <h2>Classroom Enhancements</h2>
+                <p>Transform learning spaces with AI-powered cameras, intuitive controls, and automated lecture capture systems that enhance the educational experience.</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800');">
+                        <div class="feature-card-icon">🎥</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>AI Teaching Cameras</h3>
+                        <p>Intelligent camera systems that automatically track instructors and optimize video capture for live streaming and recorded content.</p>
+                        <ul class="feature-list">
+                            <li>Automatic instructor body tracking</li>
+                            <li>Gesture recognition for whiteboard zoom</li>
+                            <li>Voice-activated camera switching</li>
+                            <li>Intelligent whiteboard detection</li>
+                            <li>Auto-framing and low-light compensation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800');">
+                        <div class="feature-card-icon">🎛️</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Stream Deck Integration</h3>
+                        <p>Intuitive one-touch control interfaces for instructors, simplifying complex AV operations and lecture capture.</p>
+                        <ul class="feature-list">
+                            <li>One-touch recording start/stop/pause</li>
+                            <li>Preset lighting scenes</li>
+                            <li>Video conferencing quick-launch</li>
+                            <li>Room mode presets (Lecture/Collab/Hybrid)</li>
+                            <li>Integrated help request button</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800');">
+                        <div class="feature-card-icon">☁️</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Automated Cloud Recording</h3>
+                        <p>Fully automated pipeline for capturing, processing, and distributing classroom recordings to approved cloud platforms.</p>
+                        <ul class="feature-list">
+                            <li>Schedule-based auto-recording (Banner sync)</li>
+                            <li>AI-powered captioning (99%+ accuracy)</li>
+                            <li>Multi-quality transcoding</li>
+                            <li>Direct LMS integration (Canvas/Blackboard)</li>
+                            <li>Intelligent tiered storage archival</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: var(--gray-100);">
+            <div class="section-header">
+                <h2>Recommended Camera Systems</h2>
+                <p>Tailored solutions for different classroom sizes and needs</p>
+            </div>
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Solution</th>
+                        <th>Best For</th>
+                        <th>Key Features</th>
+                        <th>Integration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Panasonic AW-UE150</strong></td>
+                        <td>Large Lecture Halls (100+ seats)</td>
+                        <td>4K, 20x optical zoom, NDI/SDI</td>
+                        <td>External AI tracking software</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AVer Auto-Tracking PTZ</strong></td>
+                        <td>Medium Classrooms (30-100 seats)</td>
+                        <td>Built-in AI, 12x zoom, USB/HDMI</td>
+                        <td>Plug-and-play, Q-SYS ready</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Huddly L1</strong></td>
+                        <td>Collaboration Spaces</td>
+                        <td>AI framing, whiteboard capture</td>
+                        <td>Native Teams/Zoom support</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shure MXA920</strong></td>
+                        <td>All Room Sizes (Audio)</td>
+                        <td>Ceiling array, voice tracking</td>
+                        <td>Dante, IntelliMix DSP</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Stream Deck Deployment Tiers</h2>
+                <p>Right-sized control solutions for every space</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>Tier 1: Large Lecture Halls</h4>
+                    <p>Stream Deck XL (32 keys) + Stream Deck Pedal for hands-free recording control. Full AV routing, lighting scenes, and comprehensive room control.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Tier 2: Medium Classrooms</h4>
+                    <p>Stream Deck MK.2 (15 keys) with essential recording, display, and conferencing controls. Balanced functionality and simplicity.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Tier 3: Small Rooms & Labs</h4>
+                    <p>Stream Deck + (8 keys) for core functions: recording, display toggle, and volume. Simplified interface for quick operations.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Tab Content: Common Grounds -->
+    <div class="tab-content" id="tab-common">
+        <div class="category-banner">
+            <div class="category-banner-bg" style="background-image: url('https://www.auburn.edu/main/welcome/images/concourse-2400.jpg');"></div>
+            <div class="category-banner-overlay"></div>
+            <div class="category-banner-content">
+                <h2>Common Grounds Enhancements</h2>
+                <p>Upgrade student gathering spaces, dining facilities, and recreational areas with modern AV systems and seamless connectivity.</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800');">
+                        <div class="feature-card-icon">🔊</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Q-SYS Audio Zones</h3>
+                        <p>Networked audio distribution throughout common areas with zone-based control and scheduling.</p>
+                        <ul class="feature-list">
+                            <li>Independent volume per zone</li>
+                            <li>Scheduled content playback</li>
+                            <li>Emergency override capability</li>
+                            <li>Background music management</li>
+                            <li>Paging and announcement integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800');">
+                        <div class="feature-card-icon">📺</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Digital Signage Network</h3>
+                        <p>Campus-wide digital display network for announcements, wayfinding, and dynamic content.</p>
+                        <ul class="feature-list">
+                            <li>Centralized content management</li>
+                            <li>Real-time event updates</li>
+                            <li>Emergency messaging priority</li>
+                            <li>Interactive wayfinding kiosks</li>
+                            <li>Social media feed integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800');">
+                        <div class="feature-card-icon">🤝</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Collaboration Pods</h3>
+                        <p>Self-service meeting spaces with wireless presentation, video conferencing, and intuitive controls.</p>
+                        <ul class="feature-list">
+                            <li>Wireless screen sharing (AirPlay/Miracast)</li>
+                            <li>Built-in video conferencing</li>
+                            <li>Room scheduling displays</li>
+                            <li>Acoustic privacy panels</li>
+                            <li>USB-C charging stations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: var(--gray-100);">
+            <div class="section-header">
+                <h2>Priority Deployment Locations</h2>
+                <p>High-traffic areas targeted for Phase 1 and Phase 2 rollout</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>Student Center Complex</h4>
+                    <p>Complete audio zone overhaul, new digital signage network, 8 collaboration pods, and upgraded food court displays.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Recreation & Wellness Center</h4>
+                    <p>Zoned audio for fitness areas, cardio, and courts. Digital schedule boards and emergency notification integration.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Ralph Brown Draughon Library</h4>
+                    <p>Quiet zone monitoring, group study room AV, reservable collaboration spaces, and enhanced WiFi coverage.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Dining Facilities</h4>
+                    <p>Menu board digital signage, ambient audio systems, TV networks for campus content, and mobile ordering displays.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Residence Hall Lounges</h4>
+                    <p>Smart TV systems with streaming access, gaming station connectivity, and study room booking displays.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Outdoor Gathering Spaces</h4>
+                    <p>Weather-resistant speakers, event-ready power/AV infrastructure, and wireless presentation capabilities.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Tab Content: Gameday Environment -->
+    <div class="tab-content" id="tab-gameday">
+        <div class="category-banner">
+            <div class="category-banner-bg" style="background-image: url('https://s3.amazonaws.com/auburntigers.com/images/2023/6/14/Jordan_Hare_Pano.jpg');"></div>
+            <div class="category-banner-overlay"></div>
+            <div class="category-banner-content">
+                <h2>Gameday Environment</h2>
+                <p>Transform Jordan-Hare Stadium and surrounding campus into a fully integrated, broadcast-ready environment for SEC productions and enhanced fan experiences.</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800');">
+                        <div class="feature-card-icon">📡</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Stadium Production Infrastructure</h3>
+                        <p>Broadcast-grade backbone supporting SEC Network and internal productions with future-proof capacity.</p>
+                        <ul class="feature-list">
+                            <li>10G/25G fiber to all camera positions</li>
+                            <li>Dante-enabled distributed I/O nodes</li>
+                            <li>Centralized LED display control</li>
+                            <li>Bonded cellular wireless cameras</li>
+                            <li>Redundant signal paths throughout</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800');">
+                        <div class="feature-card-icon">🎬</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Production Control Rooms</h3>
+                        <p>State-of-the-art control facilities for live broadcasts, replays, and multi-camera productions.</p>
+                        <ul class="feature-list">
+                            <li>Primary broadcast-grade control room</li>
+                            <li>Backup/flex room for redundancy</li>
+                            <li>Multi-channel replay systems</li>
+                            <li>Graphics and scoreboard integration</li>
+                            <li>Mobile production truck support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1459865264687-595d652de67e?w=800');">
+                        <div class="feature-card-icon">🎉</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Campus Perimeter Systems</h3>
+                        <p>Extended AV infrastructure supporting tailgating zones, parking areas, and fan gathering spaces.</p>
+                        <ul class="feature-list">
+                            <li>Parking lot LED wayfinding displays</li>
+                            <li>Tailgate zone audio networks</li>
+                            <li>Emergency mass notification</li>
+                            <li>Weather monitoring integration</li>
+                            <li>Automated lightning delay protocols</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: var(--gray-100);">
+            <div class="section-header">
+                <h2>Gameday Infrastructure Specifications</h2>
+                <p>Technical requirements for broadcast-quality production</p>
+            </div>
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Specification</th>
+                        <th>Benefit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Fiber Backbone</strong></td>
+                        <td>10G/25G single-mode fiber runs</td>
+                        <td>Future-proof for 4K/8K production</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Distributed I/O</strong></td>
+                        <td>Q-SYS + Dante network endpoints</td>
+                        <td>Flexible routing, reduced cable runs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LED Integration</strong></td>
+                        <td>Centralized Novastar/Brompton control</td>
+                        <td>Coordinated visual messaging</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wireless Cameras</strong></td>
+                        <td>Bonded cellular + RF camera links</td>
+                        <td>Enhanced sideline/crowd mobility</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Intercom System</strong></td>
+                        <td>RTS/Clear-Com IP-based system</td>
+                        <td>Seamless crew communication</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Key Outcomes</h2>
+                <p>Measurable improvements to gameday operations</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>60% Setup Time Reduction</h4>
+                    <p>Pre-installed infrastructure and standardized connections dramatically reduce pre-game preparation time.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Broadcast-Quality Content</h4>
+                    <p>SEC Network-ready production capabilities for Auburn Athletics media channels and social platforms.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Enhanced Fan Experience</h4>
+                    <p>Coordinated audio/visual delivery throughout stadium and surrounding campus areas.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Improved Safety Communications</h4>
+                    <p>Integrated emergency notification with automatic weather monitoring and crowd management systems.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Tab Content: Campus Infrastructure -->
+    <div class="tab-content" id="tab-infrastructure">
+        <div class="category-banner">
+            <div class="category-banner-bg" style="background-image: url('https://www.auburn.edu/main/welcome/images/samford-lawn-spring-2400.jpg');"></div>
+            <div class="category-banner-overlay"></div>
+            <div class="category-banner-content">
+                <h2>Campus Infrastructure</h2>
+                <p>Deploy a unified Q-SYS networked AV ecosystem across campus, creating a scalable, manageable, and future-proof technology foundation.</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800');">
+                        <div class="feature-card-icon">🖥️</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Q-SYS Core Processing</h3>
+                        <p>Software-based AV platform providing unified control, processing, and management across all campus systems.</p>
+                        <ul class="feature-list">
+                            <li>Core 510i processors (campus-wide)</li>
+                            <li>Core 110f processors (building-level)</li>
+                            <li>Redundant configuration for critical venues</li>
+                            <li>Dante/AES67 audio networking</li>
+                            <li>Native IT network integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800');">
+                        <div class="feature-card-icon">🌐</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Network Video Distribution</h3>
+                        <p>4K video over standard IP networks using Q-SYS NV Series for flexible, scalable video routing.</p>
+                        <ul class="feature-list">
+                            <li>Q-SYS NV-32-H encoders/decoders</li>
+                            <li>4K60 4:4:4 video quality</li>
+                            <li>Zero-latency switching</li>
+                            <li>Crestron/Extron migration support</li>
+                            <li>HDCP 2.2 compliance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800');">
+                        <div class="feature-card-icon">📊</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Remote Management</h3>
+                        <p>Cloud-based monitoring and management platform for proactive system health and remote troubleshooting.</p>
+                        <ul class="feature-list">
+                            <li>Q-SYS Reflect Enterprise Manager</li>
+                            <li>24/7 automated health monitoring</li>
+                            <li>Remote troubleshooting capabilities</li>
+                            <li>Firmware update management</li>
+                            <li>Usage analytics and reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: var(--gray-100);">
+            <div class="section-header">
+                <h2>Why Q-SYS?</h2>
+                <p>Key advantages of the Q-SYS platform for campus-wide deployment</p>
+            </div>
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Advantage</th>
+                        <th>Description</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Software-Based</strong></td>
+                        <td>Features added via software updates</td>
+                        <td>Future-proof investment protection</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IT-Friendly</strong></td>
+                        <td>Runs on standard network infrastructure</td>
+                        <td>Simplified deployment and support</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unified Platform</strong></td>
+                        <td>Single system for audio, video, control</td>
+                        <td>Reduced complexity and training</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scalability</strong></td>
+                        <td>Add capacity without replacing core</td>
+                        <td>Grow with campus needs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Open Ecosystem</strong></td>
+                        <td>Integrates with third-party systems</td>
+                        <td>Protect existing investments</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Phased Deployment Strategy</h2>
+                <p>Systematic rollout minimizing disruption while maximizing value</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>Phase 1: Athletic Facilities</h4>
+                    <p>Jordan-Hare Stadium, basketball arena, baseball/softball complexes, and athletic training facilities.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Phase 2: Academic Core</h4>
+                    <p>Large lecture halls (100+ capacity), performing arts venues, and conference centers.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Phase 3: Campus Expansion</h4>
+                    <p>Standard classrooms, administrative buildings, and outdoor event spaces.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Tab Content: Analytics & Tracking -->
+    <div class="tab-content" id="tab-analytics">
+        <div class="category-banner">
+            <div class="category-banner-bg" style="background-image: url('https://www.auburn.edu/main/welcome/images/foy-student-center-2400.jpg');"></div>
+            <div class="category-banner-overlay"></div>
+            <div class="category-banner-content">
+                <h2>Analytics & People Tracking</h2>
+                <p>Deploy intelligent people-counting and flow analytics systems to optimize operations, enhance safety, and enable data-driven facility management.</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800');">
+                        <div class="feature-card-icon">👥</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Occupancy Monitoring</h3>
+                        <p>Real-time building and zone occupancy tracking for safety compliance and resource optimization.</p>
+                        <ul class="feature-list">
+                            <li>Thermal counting at entrances</li>
+                            <li>Live occupancy dashboards</li>
+                            <li>Capacity threshold alerts</li>
+                            <li>Historical trend analysis</li>
+                            <li>Emergency evacuation support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800');">
+                        <div class="feature-card-icon">📈</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Flow Analytics</h3>
+                        <p>Understand movement patterns to optimize space utilization, reduce congestion, and improve experiences.</p>
+                        <ul class="feature-list">
+                            <li>Stereo vision cameras for detail</li>
+                            <li>Queue monitoring and alerts</li>
+                            <li>Path analysis and heatmaps</li>
+                            <li>Peak usage predictions</li>
+                            <li>Gameday crowd optimization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image" style="background-image: url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800');">
+                        <div class="feature-card-icon">🔒</div>
+                    </div>
+                    <div class="feature-card-body">
+                        <h3>Privacy-First Design</h3>
+                        <p>Comprehensive privacy protections ensuring FERPA compliance while delivering actionable insights.</p>
+                        <ul class="feature-list">
+                            <li>No facial recognition or PII</li>
+                            <li>Edge processing - data stays local</li>
+                            <li>Anonymous aggregate data only</li>
+                            <li>Transparent signage campus-wide</li>
+                            <li>WiFi analytics respect opt-out</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: var(--gray-100);">
+            <div class="section-header">
+                <h2>Sensor Technologies</h2>
+                <p>Purpose-built sensors for different environments and use cases</p>
+            </div>
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Use Case</th>
+                        <th>Privacy Protection</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Thermal Counting</strong></td>
+                        <td>Building entrances, high-traffic doors</td>
+                        <td>Detects heat signatures only, no images</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stereo Vision</strong></td>
+                        <td>Detailed flow analysis, queues</td>
+                        <td>Edge AI processing, no cloud upload</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LiDAR Arrays</strong></td>
+                        <td>Large open spaces, plazas</td>
+                        <td>Anonymous 3D point-cloud data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WiFi/BLE Analytics</strong></td>
+                        <td>Campus-wide movement patterns</td>
+                        <td>MAC address hashing and anonymization</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Phase 1 Deployment Locations</h2>
+                <p>Initial high-impact locations for analytics rollout</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>Jordan-Hare Stadium</h4>
+                    <p>All entry gates, concourse zones, concession areas, and restroom queues for gameday optimization.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Student Center Complex</h4>
+                    <p>Main entrances, food court, meeting rooms, and study areas for utilization insights.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Recreation Center</h4>
+                    <p>Fitness areas, basketball courts, pool deck, and locker rooms for capacity management.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Main Library</h4>
+                    <p>All floors, study rooms, computer labs, and special collections for space optimization.</p>
+                </div>
+                <div class="info-box">
+                    <h4>Dining Facilities (Top 5)</h4>
+                    <p>Entry points and seating areas for meal plan optimization and staffing efficiency.</p>
+                </div>
+                <div class="info-box">
+                    <h4>High-Traffic Academic Buildings</h4>
+                    <p>Main corridors and common areas in Haley Center, Shelby Center, and Engineering complex.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section section-full" style="background: var(--gray-100);">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Implementation Timeline</h2>
+                <p>A phased approach ensuring successful deployment across campus</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 1: Foundation</div>
+                        <h4>Months 1-6</h4>
+                        <p>Network infrastructure assessment and upgrades. Q-SYS core deployment in athletic facilities. Pilot AI camera installation in 5 lecture halls. People tracking pilot at Student Center and Stadium.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 2: Expansion</div>
+                        <h4>Months 7-12</h4>
+                        <p>Q-SYS rollout to academic buildings. Stream Deck deployment to 50 priority classrooms. Cloud recording pipeline activation. Campus-wide people tracking expansion.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 3: Optimization</div>
+                        <h4>Months 13-18</h4>
+                        <p>Full classroom modernization program. Advanced analytics dashboard deployment. Integration refinement and testing. Comprehensive staff training completion.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 4: Innovation</div>
+                        <h4>Months 19-24</h4>
+                        <p>AR/VR readiness infrastructure. Advanced AI feature deployment. Continuous improvement program launch. Technology refresh planning for next cycle.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Section -->
+    <section id="budget" class="section section-full budget-section">
+        <div class="section-inner">
+            <div class="section-header section-header-light">
+                <h2>Investment Overview</h2>
+                <p>Comprehensive budget framework for capital and operational costs</p>
+            </div>
+            <div class="budget-grid">
+                <div class="budget-card">
+                    <h3>💰 Capital Investment</h3>
+                    <div class="budget-item">
+                        <span>Gameday Infrastructure</span>
+                        <span>$2.5M - $4.0M</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>People Tracking System</span>
+                        <span>$800K - $1.5M</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Q-SYS Ecosystem</span>
+                        <span>$3.0M - $5.0M</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Stream Deck Integration</span>
+                        <span>$150K - $300K</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>AI Camera Systems</span>
+                        <span>$1.5M - $2.5M</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Cloud Recording Platform</span>
+                        <span>$400K - $800K</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Professional Services</span>
+                        <span>$500K - $1.0M</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Contingency (15%)</span>
+                        <span>$1.3M - $2.3M</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Total Estimated</span>
+                        <span>$10.2M - $17.4M</span>
+                    </div>
+                </div>
+                <div class="budget-card">
+                    <h3>📅 Annual Operating Costs</h3>
+                    <div class="budget-item">
+                        <span>Cloud Storage & Processing</span>
+                        <span>$150K - $300K</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Software Licensing</span>
+                        <span>$200K - $400K</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Maintenance Contracts</span>
+                        <span>$300K - $500K</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Additional Staffing (FTEs)</span>
+                        <span>$250K - $400K</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Total Annual</span>
+                        <span>$900K - $1.6M</span>
+                    </div>
+                </div>
+                <div class="budget-card">
+                    <h3>📊 Annual ROI Benefits</h3>
+                    <div class="budget-item">
+                        <span>Reduced AV Support Labor</span>
+                        <span>$200K - $350K</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Energy Savings (Occupancy)</span>
+                        <span>$150K - $250K</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Avoided Equipment Costs</span>
+                        <span>$300K - $500K</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Athletic Media Revenue</span>
+                        <span>$500K - $1.0M</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Lecture Capture Staffing</span>
+                        <span>$100K - $200K</span>
+                    </div>
+                    <div class="budget-item">
+                        <span>Total Annual Benefit</span>
+                        <span>$1.25M - $2.3M</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section section-full partners-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Recommended Partners</h2>
+                <p>Industry-leading integrators and technology providers</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <h4>Diversified</h4>
+                    <p>Large-scale higher education AV integration specialist</p>
+                </div>
+                <div class="partner-card">
+                    <h4>Whitlock</h4>
+                    <p>Q-SYS certified with SEC venue experience</p>
+                </div>
+                <div class="partner-card">
+                    <h4>AVI-SPL</h4>
+                    <p>National scale with ongoing support capabilities</p>
+                </div>
+                <div class="partner-card">
+                    <h4>QSC (Q-SYS)</h4>
+                    <p>Primary AV platform manufacturer</p>
+                </div>
+                <div class="partner-card">
+                    <h4>Panopto</h4>
+                    <p>Enterprise lecture capture platform</p>
+                </div>
+                <div class="partner-card">
+                    <h4>Verkada / Axis</h4>
+                    <p>People counting and analytics sensors</p>
+                </div>
+                <div class="partner-card">
+                    <h4>Elgato</h4>
+                    <p>Stream Deck ecosystem provider</p>
+                </div>
+                <div class="partner-card">
+                    <h4>Panasonic / AVer</h4>
+                    <p>AI-powered PTZ camera systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Transform Auburn?</h2>
+            <p>Let's discuss how this initiative can position Auburn University as a leader in educational technology and gameday experience.</p>
+            <a href="mailto:contact@auburn.edu" class="btn btn-white">Schedule a Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Auburn Production Enhancement</h3>
+                <p>A comprehensive initiative to modernize Auburn University's campus AV infrastructure, enhancing classroom instruction, gameday operations, and the overall campus experience.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="#" onclick="switchTab('classroom')">Classroom</a></li>
+                    <li><a href="#" onclick="switchTab('common')">Common Grounds</a></li>
+                    <li><a href="#" onclick="switchTab('gameday')">Gameday</a></li>
+                    <li><a href="#" onclick="switchTab('infrastructure')">Infrastructure</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="#budget">Budget</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Auburn University</h4>
+                <ul>
+                    <li><a href="https://www.auburn.edu" target="_blank">auburn.edu</a></li>
+                    <li><a href="https://auburntigers.com" target="_blank">Auburn Athletics</a></li>
+                    <li><a href="https://ocm.auburn.edu" target="_blank">Office of Communications</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Production Enhancement Proposal | January 2026 | Version 1.0</p>
+            <div class="footer-tagline">War Eagle!</div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        function switchTab(tabId) {
+            // Remove active from all
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Add active to selected
+            document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+
+            // Scroll to tabs
+            document.querySelector('.tab-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.dataset.tab;
+                switchTab(tabId);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Navbar active state on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .info-box, .timeline-content, .partner-card, .budget-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle (basic implementation)
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'white';
+            navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+        });
+    </script>
+</body>
+</html>
