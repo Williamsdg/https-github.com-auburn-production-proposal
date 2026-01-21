@@ -541,6 +541,126 @@
             color: var(--gray-600);
         }
 
+        .timeline-solutions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+        }
+
+        .timeline-solutions .solution-tag {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background: var(--gray-100);
+            color: var(--auburn-navy);
+            font-weight: 600;
+        }
+
+        .timeline-solutions .solution-tag.active {
+            background: var(--auburn-orange);
+            color: var(--white);
+        }
+
+        .timeline-milestone {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--gray-300);
+        }
+
+        .timeline-milestone-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            margin-bottom: 0.35rem;
+        }
+
+        .timeline-milestone-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-milestone-item .check {
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .timeline-progress {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .progress-item {
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+
+        .progress-circle {
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle-bg {
+            fill: none;
+            stroke: var(--gray-200);
+            stroke-width: 8;
+        }
+
+        .progress-circle-fill {
+            fill: none;
+            stroke: var(--auburn-orange);
+            stroke-width: 8;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .progress-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--auburn-navy);
+        }
+
+        .progress-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            margin-top: 0.5rem;
+        }
+
+        .timeline-checkpoint {
+            background: linear-gradient(135deg, var(--auburn-navy), #0a3a6b);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .timeline-checkpoint .checkpoint-icon {
+            font-size: 1.25rem;
+        }
+
+        .timeline-checkpoint .checkpoint-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
         /* Budget */
         .budget-disclaimer {
             background: rgba(255, 193, 7, 0.15);
@@ -869,6 +989,9 @@
             .risk-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .timeline-progress {
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -941,6 +1064,20 @@
 
             .risk-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .timeline-progress {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .timeline-checkpoint {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .timeline-solutions {
+                justify-content: flex-start;
             }
         }
     </style>
@@ -1195,14 +1332,33 @@
         <div class="section-inner">
             <div class="section-header">
                 <h2>Implementation Timeline</h2>
-                <p>A phased approach ensuring successful deployment</p>
+                <p>A phased approach with clear milestones and deliverables</p>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-phase">Phase 1</div>
                         <h4>Foundation (Months 1-6)</h4>
-                        <p>Network assessment, Q-SYS core in athletics, pilot AI cameras in 5 lecture halls, people tracking pilot.</p>
+                        <p>Establish core infrastructure and validate with pilot deployments before full rollout.</p>
+                        <div class="timeline-solutions">
+                            <span class="solution-tag active">Q-SYS Core</span>
+                            <span class="solution-tag active">AI Cameras (Pilot)</span>
+                            <span class="solution-tag active">People Analytics (Pilot)</span>
+                            <span class="solution-tag">Smart Interface</span>
+                            <span class="solution-tag">Cloud Recording</span>
+                            <span class="solution-tag">Gameday</span>
+                            <span class="solution-tag">Podcast Studios</span>
+                        </div>
+                        <div class="timeline-milestone">
+                            <div class="timeline-milestone-item"><span class="check">✓</span> Network assessment complete</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> Q-SYS core deployed in athletics</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> 5 pilot classrooms with AI cameras</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> First gameday audio test</div>
+                        </div>
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-icon">🎯</span>
+                            <span class="checkpoint-text">Go/No-Go Review: Pilot success metrics validated before expansion</span>
+                        </div>
                     </div>
                     <div class="timeline-marker"></div>
                 </div>
@@ -1210,25 +1366,126 @@
                     <div class="timeline-content">
                         <div class="timeline-phase">Phase 2</div>
                         <h4>Expansion (Months 7-12)</h4>
-                        <p>Q-SYS academic rollout, Stream Deck in 50 classrooms, cloud recording pipeline, expanded tracking.</p>
+                        <p>Scale successful pilots across campus and introduce Stream Deck controls.</p>
+                        <div class="timeline-solutions">
+                            <span class="solution-tag active">Q-SYS Core</span>
+                            <span class="solution-tag active">AI Cameras</span>
+                            <span class="solution-tag active">People Analytics</span>
+                            <span class="solution-tag active">Smart Interface</span>
+                            <span class="solution-tag active">Cloud Recording</span>
+                            <span class="solution-tag">Gameday</span>
+                            <span class="solution-tag active">Podcast Studios (Pilot)</span>
+                        </div>
+                        <div class="timeline-milestone">
+                            <div class="timeline-milestone-item"><span class="check">✓</span> 50 classrooms with Stream Deck</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> Cloud recording pipeline live</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> First podcast studio operational</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> Digital signage in 3 buildings</div>
+                        </div>
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-icon">🎯</span>
+                            <span class="checkpoint-text">Mid-Project Review: Faculty feedback incorporated, budget reconciliation</span>
+                        </div>
                     </div>
                     <div class="timeline-marker"></div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-phase">Phase 3</div>
-                        <h4>Optimization (Months 13-18)</h4>
-                        <p>Full classroom modernization, advanced analytics, integration refinement, staff training completion.</p>
+                        <h4>Campus-Wide (Months 13-18)</h4>
+                        <p>Full classroom modernization and gameday infrastructure deployment.</p>
+                        <div class="timeline-solutions">
+                            <span class="solution-tag active">Q-SYS Core</span>
+                            <span class="solution-tag active">AI Cameras</span>
+                            <span class="solution-tag active">People Analytics</span>
+                            <span class="solution-tag active">Smart Interface</span>
+                            <span class="solution-tag active">Cloud Recording</span>
+                            <span class="solution-tag active">Gameday</span>
+                            <span class="solution-tag active">Podcast Studios</span>
+                        </div>
+                        <div class="timeline-milestone">
+                            <div class="timeline-milestone-item"><span class="check">✓</span> 150+ classrooms fully equipped</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> Outdoor audio live for gamedays</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> All podcast studios operational</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> Campus-wide digital signage</div>
+                        </div>
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-icon">🎯</span>
+                            <span class="checkpoint-text">Operational Handoff: IT staff fully trained, support procedures documented</span>
+                        </div>
                     </div>
                     <div class="timeline-marker"></div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-phase">Phase 4</div>
-                        <h4>Innovation (Months 19-24)</h4>
-                        <p>AR/VR readiness, advanced AI features, continuous improvement program, technology refresh planning.</p>
+                        <h4>Optimization (Months 19-24)</h4>
+                        <p>Fine-tune systems, advanced features, and plan for future innovation.</p>
+                        <div class="timeline-solutions">
+                            <span class="solution-tag active">Q-SYS Core</span>
+                            <span class="solution-tag active">AI Cameras</span>
+                            <span class="solution-tag active">People Analytics</span>
+                            <span class="solution-tag active">Smart Interface</span>
+                            <span class="solution-tag active">Cloud Recording</span>
+                            <span class="solution-tag active">Gameday</span>
+                            <span class="solution-tag active">Podcast Studios</span>
+                        </div>
+                        <div class="timeline-milestone">
+                            <div class="timeline-milestone-item"><span class="check">✓</span> Advanced analytics dashboards</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> AI feature enhancements</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> Continuous improvement program</div>
+                            <div class="timeline-milestone-item"><span class="check">✓</span> Technology refresh roadmap</div>
+                        </div>
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-icon">🏆</span>
+                            <span class="checkpoint-text">Project Complete: ROI assessment, lessons learned, future recommendations</span>
+                        </div>
                     </div>
                     <div class="timeline-marker"></div>
+                </div>
+            </div>
+
+            <!-- Progress Summary -->
+            <div class="timeline-progress">
+                <div class="progress-item">
+                    <div class="progress-bar-container">
+                        <svg class="progress-circle" width="80" height="80" viewBox="0 0 80 80">
+                            <circle class="progress-circle-bg" cx="40" cy="40" r="32"></circle>
+                            <circle class="progress-circle-fill" cx="40" cy="40" r="32" stroke-dasharray="201" stroke-dashoffset="151"></circle>
+                        </svg>
+                        <div class="progress-value">25%</div>
+                    </div>
+                    <div class="progress-label">Phase 1</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-bar-container">
+                        <svg class="progress-circle" width="80" height="80" viewBox="0 0 80 80">
+                            <circle class="progress-circle-bg" cx="40" cy="40" r="32"></circle>
+                            <circle class="progress-circle-fill" cx="40" cy="40" r="32" stroke-dasharray="201" stroke-dashoffset="100"></circle>
+                        </svg>
+                        <div class="progress-value">50%</div>
+                    </div>
+                    <div class="progress-label">Phase 2</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-bar-container">
+                        <svg class="progress-circle" width="80" height="80" viewBox="0 0 80 80">
+                            <circle class="progress-circle-bg" cx="40" cy="40" r="32"></circle>
+                            <circle class="progress-circle-fill" cx="40" cy="40" r="32" stroke-dasharray="201" stroke-dashoffset="50"></circle>
+                        </svg>
+                        <div class="progress-value">75%</div>
+                    </div>
+                    <div class="progress-label">Phase 3</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-bar-container">
+                        <svg class="progress-circle" width="80" height="80" viewBox="0 0 80 80">
+                            <circle class="progress-circle-bg" cx="40" cy="40" r="32"></circle>
+                            <circle class="progress-circle-fill" cx="40" cy="40" r="32" stroke-dasharray="201" stroke-dashoffset="0"></circle>
+                        </svg>
+                        <div class="progress-value">100%</div>
+                    </div>
+                    <div class="progress-label">Complete</div>
                 </div>
             </div>
         </div>
