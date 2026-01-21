@@ -784,6 +784,65 @@
             margin-top: 1rem;
         }
 
+        /* Risk Mitigation */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .risk-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--auburn-orange);
+        }
+
+        .risk-card h4 {
+            color: var(--auburn-navy);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .risk-card .risk-level {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .risk-level.medium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .risk-level.low {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .risk-card p {
+            color: var(--gray-600);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .risk-card .mitigation {
+            background: var(--gray-100);
+            border-radius: 6px;
+            padding: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--gray-700);
+        }
+
+        .risk-card .mitigation strong {
+            color: var(--auburn-navy);
+        }
+
         /* Responsive */
         @media (max-width: 1200px) {
             .solutions-grid {
@@ -805,6 +864,9 @@
                 grid-template-columns: 1fr;
             }
             .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .risk-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -875,6 +937,10 @@
 
             .timeline-marker {
                 left: 20px;
+            }
+
+            .risk-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1264,6 +1330,46 @@
                         <span>$1.25M - $2.3M</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Mitigation -->
+    <section id="risk" class="section">
+        <div class="section-header">
+            <h2>Risk Mitigation</h2>
+            <p>Proactive strategies to address potential challenges</p>
+        </div>
+        <div class="risk-grid">
+            <div class="risk-card">
+                <h4>Construction Delays <span class="risk-level medium">Medium</span></h4>
+                <p>Building renovations or outdoor installations may face weather or scheduling conflicts.</p>
+                <div class="mitigation"><strong>Strategy:</strong> Phased rollout allows flexibility. Prioritize high-impact areas first. Summer installation windows for academic buildings.</div>
+            </div>
+            <div class="risk-card">
+                <h4>Faculty Adoption <span class="risk-level medium">Medium</span></h4>
+                <p>Resistance to new technology or reluctance to change established workflows.</p>
+                <div class="mitigation"><strong>Strategy:</strong> Pilot program with early adopters. Stream Deck simplicity reduces learning curve. Dedicated training and on-call support.</div>
+            </div>
+            <div class="risk-card">
+                <h4>Budget Overruns <span class="risk-level medium">Medium</span></h4>
+                <p>Unforeseen costs from site conditions, equipment changes, or scope expansion.</p>
+                <div class="mitigation"><strong>Strategy:</strong> 15% contingency built into estimates. Modular approach allows scope adjustment. Standardized equipment reduces custom costs.</div>
+            </div>
+            <div class="risk-card">
+                <h4>Technology Obsolescence <span class="risk-level low">Low</span></h4>
+                <p>Rapid technology evolution making equipment outdated before ROI is realized.</p>
+                <div class="mitigation"><strong>Strategy:</strong> Q-SYS software-based architecture allows updates without hardware replacement. Industry-standard protocols ensure longevity.</div>
+            </div>
+            <div class="risk-card">
+                <h4>Integration Challenges <span class="risk-level medium">Medium</span></h4>
+                <p>Difficulty connecting new systems with existing Auburn IT infrastructure.</p>
+                <div class="mitigation"><strong>Strategy:</strong> Q-SYS as unified backbone reduces complexity. Native IT protocols (SNMP, REST APIs). Phased testing before full deployment.</div>
+            </div>
+            <div class="risk-card">
+                <h4>Supply Chain Issues <span class="risk-level low">Low</span></h4>
+                <p>Vendor delays or equipment shortages affecting project timeline.</p>
+                <div class="mitigation"><strong>Strategy:</strong> Multiple approved vendors for each category. Standardized specs allow substitution. Early procurement for critical items.</div>
             </div>
         </div>
     </section>
