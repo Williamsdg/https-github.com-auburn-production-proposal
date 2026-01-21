@@ -647,6 +647,24 @@
             color: var(--white);
         }
 
+        .budget-disclaimer {
+            background: rgba(255, 193, 7, 0.15);
+            border: 1px solid rgba(255, 193, 7, 0.4);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .budget-disclaimer strong {
+            color: #ffc107;
+        }
+
         .budget-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1785,6 +1803,9 @@
             <div class="section-header section-header-light">
                 <h2>Investment Overview</h2>
                 <p>Comprehensive budget framework for capital and operational costs</p>
+                <div class="budget-disclaimer">
+                    <strong>⚠️ Preliminary Estimates Only</strong> — These figures are rough order-of-magnitude estimates based on typical higher education AV projects. Actual costs will vary based on site conditions, scope refinement, vendor negotiations, and current market pricing. Formal quotes from qualified integrators are required for accurate budgeting.
+                </div>
             </div>
             <div class="budget-grid">
                 <div class="budget-card">
