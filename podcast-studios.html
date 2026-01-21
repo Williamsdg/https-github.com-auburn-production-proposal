@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Studios - Auburn University Production Enhancement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --auburn-navy: #03244d;
+            --auburn-orange: #DD550C;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: var(--gray-800); background: var(--gray-50); }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; background: var(--white); padding: 1rem 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+        .nav-logo img { height: 45px; }
+        .nav-logo-text { display: flex; flex-direction: column; }
+        .nav-logo-title { font-weight: 700; font-size: 1.1rem; color: var(--auburn-navy); line-height: 1.2; }
+        .nav-logo-subtitle { font-size: 0.7rem; color: var(--auburn-orange); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--auburn-orange); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .back-link:hover { color: var(--auburn-navy); }
+
+        .hero { background: linear-gradient(135deg, var(--auburn-navy) 0%, rgba(3,36,77,0.9) 100%); color: var(--white); padding: 8rem 2rem 4rem; text-align: center; }
+        .hero-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+        .content { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 { font-size: 1.75rem; color: var(--auburn-navy); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--auburn-orange); display: inline-block; }
+        .section p { color: var(--gray-700); margin-bottom: 1rem; font-size: 1.05rem; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+        .feature-card { background: var(--white); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid var(--auburn-orange); }
+        .feature-card h3 { color: var(--auburn-navy); font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--gray-600); font-size: 0.9rem; margin-bottom: 0; }
+
+        .studio-types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .studio-card {
+            background: var(--auburn-navy);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .studio-card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .studio-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--white); }
+        .studio-card p { font-size: 0.85rem; opacity: 0.85; color: var(--white); margin-bottom: 0.75rem; }
+        .studio-card .capacity { font-size: 0.75rem; background: var(--auburn-orange); padding: 0.25rem 0.75rem; border-radius: 20px; display: inline-block; }
+
+        .equipment-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 1.5rem;
+        }
+
+        .equipment-section h3 {
+            color: var(--auburn-navy);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .equipment-section .subtitle {
+            color: var(--auburn-orange);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .equipment-item {
+            background: var(--gray-100);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+        }
+
+        .equipment-item h4 {
+            color: var(--auburn-navy);
+            font-size: 0.9rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .equipment-item .model {
+            color: var(--auburn-orange);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .equipment-item p {
+            color: var(--gray-600);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        .branding-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .branding-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .branding-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .branding-card h3 { color: var(--auburn-navy); font-size: 1rem; margin-bottom: 0.5rem; }
+        .branding-card p { color: var(--gray-600); font-size: 0.85rem; margin: 0; }
+
+        .location-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 1rem;
+        }
+
+        .location-section h3 {
+            color: var(--auburn-navy);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+
+        .location-item {
+            background: var(--gray-100);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            border-left: 3px solid var(--auburn-orange);
+        }
+
+        .location-item h4 {
+            color: var(--auburn-navy);
+            font-size: 0.85rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .location-item p {
+            color: var(--gray-600);
+            font-size: 0.75rem;
+            margin: 0;
+        }
+
+        .benefits-list { list-style: none; margin-top: 1rem; }
+        .benefits-list li { padding: 0.75rem 0; padding-left: 2rem; position: relative; color: var(--gray-700); }
+        .benefits-list li::before { content: '✓'; position: absolute; left: 0; color: var(--auburn-orange); font-weight: 700; font-size: 1.1rem; }
+
+        .summary-stats {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .summary-stats h4 {
+            color: var(--auburn-navy);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--auburn-orange);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+
+        .footer { background: var(--auburn-navy); color: var(--white); padding: 2rem; text-align: center; }
+        .footer a { color: var(--auburn-orange); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .features-grid, .equipment-grid, .studio-types, .branding-grid { grid-template-columns: 1fr; }
+            .location-list { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Auburn_Tigers_logo.svg/1200px-Auburn_Tigers_logo.svg.png" alt="Auburn Tigers">
+                <div class="nav-logo-text">
+                    <span class="nav-logo-title">Production Enhancement</span>
+                    <span class="nav-logo-subtitle">Proposal 2026</span>
+                </div>
+            </a>
+            <a href="index.html#solutions" class="back-link">← Back to Solutions</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-icon">🎙️</div>
+        <h1>Podcast Studios</h1>
+        <p>Standardized podcast production facilities with consistent Auburn branding, professional equipment, and creative spaces for students and faculty.</p>
+    </section>
+
+    <div class="content">
+        <div class="section">
+            <h2>Overview</h2>
+            <p>Podcasting has become an essential medium for education, research dissemination, and student engagement. Yet across Auburn's campus, podcast production happens in makeshift spaces with inconsistent equipment, varying audio quality, and no cohesive brand presence. Some departments have invested in quality gear while others record on laptops in offices. The result: Auburn's voice sounds different everywhere.</p>
+            <p>This initiative standardizes podcast production campus-wide. Purpose-built studios equipped with identical, professional-grade audio and video equipment ensure every Auburn podcast meets broadcast quality standards. Pre-designed graphic templates, intro/outro packages, and lower thirds maintain consistent Auburn branding whether the content comes from Athletics, the College of Engineering, or a student organization.</p>
+            <p>Beyond equipment, we're creating accessible spaces where students can develop media production skills. Walk-in studios with self-service booking let anyone create professional content. Training programs teach proper technique. The infrastructure connects to Auburn's cloud recording pipeline for automatic processing, captioning, and distribution.</p>
+        </div>
+
+        <!-- Studio Types -->
+        <div class="section">
+            <h2>Studio Types</h2>
+            <div class="studio-types">
+                <div class="studio-card">
+                    <div class="icon">🎤</div>
+                    <h3>Interview Studio</h3>
+                    <p>Two-person setup with professional lighting and multiple camera angles</p>
+                    <span class="capacity">2-3 People</span>
+                </div>
+                <div class="studio-card">
+                    <div class="icon">🎧</div>
+                    <h3>Panel Studio</h3>
+                    <p>Roundtable configuration for group discussions and multi-host shows</p>
+                    <span class="capacity">4-6 People</span>
+                </div>
+                <div class="studio-card">
+                    <div class="icon">📱</div>
+                    <h3>Solo Booth</h3>
+                    <p>Compact, soundproofed space for individual recording and voiceovers</p>
+                    <span class="capacity">1 Person</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standardized Equipment -->
+        <div class="section">
+            <h2>Standardized Equipment</h2>
+            <p>Every studio across campus uses identical equipment, ensuring consistent quality and simplifying training and support.</p>
+
+            <div class="equipment-section">
+                <h3>Audio Equipment</h3>
+                <div class="subtitle">Broadcast-quality capture for every voice</div>
+                <div class="equipment-grid">
+                    <div class="equipment-item">
+                        <h4>Microphones</h4>
+                        <div class="model">Shure SM7B / Rode PodMic</div>
+                        <p>Industry-standard dynamic mics with excellent rejection</p>
+                    </div>
+                    <div class="equipment-item">
+                        <h4>Audio Interface</h4>
+                        <div class="model">Rodecaster Pro II</div>
+                        <p>All-in-one podcast production with built-in processing</p>
+                    </div>
+                    <div class="equipment-item">
+                        <h4>Headphones</h4>
+                        <div class="model">Audio-Technica ATH-M50x</div>
+                        <p>Accurate monitoring with excellent isolation</p>
+                    </div>
+                    <div class="equipment-item">
+                        <h4>Acoustic Treatment</h4>
+                        <div class="model">Custom Auburn-branded panels</div>
+                        <p>Professional sound absorption with navy/orange aesthetics</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equipment-section">
+                <h3>Video Equipment</h3>
+                <div class="subtitle">Multi-camera production for video podcasts</div>
+                <div class="equipment-grid">
+                    <div class="equipment-item">
+                        <h4>Primary Cameras</h4>
+                        <div class="model">Sony ZV-E10 / Canon R50</div>
+                        <p>4K mirrorless with clean HDMI out for streaming</p>
+                    </div>
+                    <div class="equipment-item">
+                        <h4>PTZ Camera</h4>
+                        <div class="model">PTZOptics Move 4K</div>
+                        <p>Remote-controlled wide shot with NDI connectivity</p>
+                    </div>
+                    <div class="equipment-item">
+                        <h4>Lighting</h4>
+                        <div class="model">Elgato Key Light Air</div>
+                        <p>App-controlled LED panels with consistent color temp</p>
+                    </div>
+                    <div class="equipment-item">
+                        <h4>Video Switcher</h4>
+                        <div class="model">ATEM Mini Pro ISO</div>
+                        <p>Multi-camera switching with individual ISO recording</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brand Consistency -->
+        <div class="section">
+            <h2>Auburn Brand Consistency</h2>
+            <p>Working with Auburn's creative teams, we've developed standardized graphics packages that maintain university brand standards across all podcast content.</p>
+            <div class="branding-grid">
+                <div class="branding-card">
+                    <div class="icon">🎬</div>
+                    <h3>Intro/Outro Templates</h3>
+                    <p>Animated openers with Auburn branding, customizable for each show</p>
+                </div>
+                <div class="branding-card">
+                    <div class="icon">📊</div>
+                    <h3>Lower Thirds</h3>
+                    <p>Name plates, titles, and info graphics in official Auburn colors</p>
+                </div>
+                <div class="branding-card">
+                    <div class="icon">🖼️</div>
+                    <h3>Thumbnail Templates</h3>
+                    <p>Episode artwork templates for consistent podcast feed appearance</p>
+                </div>
+                <div class="branding-card">
+                    <div class="icon">🎵</div>
+                    <h3>Audio Branding</h3>
+                    <p>Licensed intro music and sound effects library</p>
+                </div>
+                <div class="branding-card">
+                    <div class="icon">📐</div>
+                    <h3>Set Design Standards</h3>
+                    <p>Backdrop guidelines, furniture specs, and lighting setups</p>
+                </div>
+                <div class="branding-card">
+                    <div class="icon">✅</div>
+                    <h3>Brand Review Process</h3>
+                    <p>Streamlined approval workflow for new show launches</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Campus Locations -->
+        <div class="section">
+            <h2>Campus Locations</h2>
+
+            <div class="location-section">
+                <h3>Primary Production Studios</h3>
+                <div class="location-list">
+                    <div class="location-item">
+                        <h4>RBD Library Media Lab</h4>
+                        <p>Panel + Interview + 2 Solo Booths</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Student Center</h4>
+                        <p>Interview Studio + Solo Booth</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Journalism Building</h4>
+                        <p>Panel Studio + Interview Studio</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-section">
+                <h3>College-Specific Studios</h3>
+                <div class="location-list">
+                    <div class="location-item">
+                        <h4>Harbert College of Business</h4>
+                        <p>Executive Interview Studio</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>College of Engineering</h4>
+                        <p>Technical Demo Studio</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>College of Education</h4>
+                        <p>Interview + Training Studio</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Athletics Complex</h4>
+                        <p>Sports Media Studio</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>Vet Med</h4>
+                        <p>Clinical Discussion Studio</p>
+                    </div>
+                    <div class="location-item">
+                        <h4>AUMB (Music Building)</h4>
+                        <p>Performance Recording Studio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Self-Service Booking</h3>
+                    <p>Online reservation system lets students and faculty book studio time 24/7. Walk-in availability displayed on door screens.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>One-Button Recording</h3>
+                    <p>Stream Deck integration starts all equipment, begins recording, and applies correct settings automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Cloud Integration</h3>
+                    <p>Recordings automatically upload to Auburn's cloud pipeline for processing, captioning, and distribution.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Remote Production</h3>
+                    <p>Built-in remote guest capability with professional audio/video for hybrid and fully remote episodes.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Training Program</h3>
+                    <p>Self-paced online certification plus hands-on workshops teach proper technique and equipment operation.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Production Support</h3>
+                    <p>On-call student workers and staff available to assist with complex productions and troubleshooting.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="section">
+            <h2>Benefits</h2>
+            <ul class="benefits-list">
+                <li>Consistent, professional audio/video quality across all Auburn podcasts</li>
+                <li>Unified Auburn branding strengthens university identity</li>
+                <li>Students gain real-world media production experience</li>
+                <li>Reduced equipment costs through standardized bulk purchasing</li>
+                <li>Simplified IT support with identical configurations everywhere</li>
+                <li>Accessible creative spaces available to all departments</li>
+                <li>Streamlined workflow from recording to publication</li>
+                <li>Professional development opportunity for student workers</li>
+            </ul>
+
+            <div class="summary-stats">
+                <h4>Podcast Studios Summary</h4>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Studio Spaces</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Studio Types</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Brand Standard</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Booking Access</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integration -->
+        <div class="section">
+            <h2>Integration</h2>
+            <p>Podcast Studios connect seamlessly with Auburn's production infrastructure. Recordings flow directly into the Cloud Recording Pipeline for automatic captioning and archival. Stream Deck controls integrate with Q-SYS for one-touch operation. The standardized equipment list aligns with AI Teaching Camera deployments, allowing shared training and support resources. Graphics packages are managed through the same content management system as digital signage, ensuring brand consistency across all Auburn media.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><a href="index.html">← Return to Main Proposal</a></p>
+    </footer>
+</body>
+</html>
