@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gameday Environment - Auburn University Production Enhancement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --auburn-navy: #03244d;
+            --auburn-orange: #DD550C;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: var(--gray-800); background: var(--gray-50); }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; background: var(--white); padding: 1rem 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+        .nav-logo img { height: 45px; }
+        .nav-logo-text { display: flex; flex-direction: column; }
+        .nav-logo-title { font-weight: 700; font-size: 1.1rem; color: var(--auburn-navy); line-height: 1.2; }
+        .nav-logo-subtitle { font-size: 0.7rem; color: var(--auburn-orange); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--auburn-orange); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .back-link:hover { color: var(--auburn-navy); }
+
+        .hero { background: linear-gradient(135deg, var(--auburn-navy) 0%, rgba(3,36,77,0.9) 100%); color: var(--white); padding: 8rem 2rem 4rem; text-align: center; }
+        .hero-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+        .content { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 { font-size: 1.75rem; color: var(--auburn-navy); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--auburn-orange); display: inline-block; }
+        .section p { color: var(--gray-700); margin-bottom: 1rem; font-size: 1.05rem; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+        .feature-card { background: var(--white); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid var(--auburn-orange); }
+        .feature-card h3 { color: var(--auburn-navy); font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--gray-600); font-size: 0.9rem; margin-bottom: 0; }
+
+        .zone-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .zone-card {
+            background: var(--auburn-navy);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .zone-card .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .zone-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .zone-card p { font-size: 0.85rem; opacity: 0.85; }
+
+        .benefits-list { list-style: none; margin-top: 1rem; }
+        .benefits-list li { padding: 0.75rem 0; padding-left: 2rem; position: relative; color: var(--gray-700); }
+        .benefits-list li::before { content: '✓'; position: absolute; left: 0; color: var(--auburn-orange); font-weight: 700; font-size: 1.1rem; }
+
+        .footer { background: var(--auburn-navy); color: var(--white); padding: 2rem; text-align: center; }
+        .footer a { color: var(--auburn-orange); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .features-grid, .zone-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Auburn_Tigers_logo.svg/1200px-Auburn_Tigers_logo.svg.png" alt="Auburn Tigers">
+                <div class="nav-logo-text">
+                    <span class="nav-logo-title">Production Enhancement</span>
+                    <span class="nav-logo-subtitle">Proposal 2026</span>
+                </div>
+            </a>
+            <a href="index.html#solutions" class="back-link">← Back to Solutions</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-icon">🏟️</div>
+        <h1>Gameday Environment</h1>
+        <p>Enhance the campus atmosphere and fan experience on gamedays with integrated outdoor AV systems and digital infrastructure.</p>
+    </section>
+
+    <div class="content">
+        <div class="section">
+            <h2>Overview</h2>
+            <p>Auburn gamedays are legendary, and the campus experience extends far beyond the stadium. This initiative focuses on enhancing the outdoor environment across campus—from tailgate areas to walkways and gathering spaces—creating an immersive, coordinated gameday atmosphere.</p>
+            <p>By deploying outdoor audio systems, digital signage, and enhanced connectivity throughout key campus zones, we can deliver real-time information, synchronized audio experiences, and improved wayfinding for the thousands of fans who make Auburn their destination on Saturdays.</p>
+        </div>
+
+        <div class="section">
+            <h2>Campus Zones</h2>
+            <div class="zone-grid">
+                <div class="zone-card">
+                    <div class="icon">🎪</div>
+                    <h3>Tailgate Areas</h3>
+                    <p>Enhanced connectivity and audio coverage for fan gatherings</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🚶</div>
+                    <h3>Fan Walkways</h3>
+                    <p>Digital signage and wayfinding along major pedestrian routes</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🏛️</div>
+                    <h3>Campus Green</h3>
+                    <p>Outdoor audio for pre-game events and announcements</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🅿️</div>
+                    <h3>Parking Areas</h3>
+                    <p>Information displays and emergency notification systems</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🎭</div>
+                    <h3>Event Plazas</h3>
+                    <p>Flexible AV infrastructure for concerts and gatherings</p>
+                </div>
+                <div class="zone-card">
+                    <div class="icon">🚪</div>
+                    <h3>Entry Points</h3>
+                    <p>Welcome messaging and crowd flow information</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Outdoor Audio Distribution</h3>
+                    <p>Weather-resistant speaker systems deliver synchronized audio across campus, from fight songs to important announcements.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Digital Signage Network</h3>
+                    <p>High-brightness outdoor displays show game updates, wayfinding information, and emergency alerts.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Enhanced WiFi Coverage</h3>
+                    <p>Extended wireless connectivity in tailgate zones and gathering areas supports fan connectivity.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Event Coordination</h3>
+                    <p>Centralized control enables staff to manage audio and displays across all zones from a single location.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Emergency Notification</h3>
+                    <p>Mass notification capability reaches fans across the entire campus footprint instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Flexible Infrastructure</h3>
+                    <p>Power and network drops support pop-up activations, vendor setups, and special events.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Benefits</h2>
+            <ul class="benefits-list">
+                <li>Creates a more immersive and coordinated gameday atmosphere</li>
+                <li>Improves communication with fans across the entire campus</li>
+                <li>Enhances safety with campus-wide emergency notification</li>
+                <li>Reduces congestion with real-time wayfinding and parking info</li>
+                <li>Supports revenue-generating activations and sponsorships</li>
+                <li>Enables better coordination of pre-game events and ceremonies</li>
+                <li>Extends the "gameday experience" beyond the stadium walls</li>
+                <li>Infrastructure supports non-gameday campus events year-round</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Integration</h2>
+            <p>All outdoor systems connect to the campus Q-SYS network, enabling unified control and monitoring. Content can be managed remotely, and the system integrates with university emergency management for coordinated campus-wide alerts. The same infrastructure supports non-gameday events like concerts, graduation ceremonies, and community gatherings.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><a href="index.html">← Return to Main Proposal</a></p>
+    </footer>
+</body>
+</html>

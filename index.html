@@ -391,6 +391,24 @@
             font-weight: 700;
         }
 
+        a.solution-card {
+            text-decoration: none;
+            display: block;
+        }
+
+        .learn-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--auburn-orange);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .solution-card:hover .learn-more {
+            color: var(--auburn-navy);
+        }
+
         /* Stakeholder Benefits */
         .stakeholder-grid {
             display: grid;
@@ -921,7 +939,7 @@
             <p>Six integrated systems working together to modernize Auburn's campus infrastructure</p>
         </div>
         <div class="solutions-grid">
-            <div class="solution-card">
+            <a href="ai-teaching-cameras.html" class="solution-card">
                 <div class="solution-card-image" style="background-image: url('https://education.auburn.edu/_assets/images/homepage-images/new-building-homepage.jpg');">
                     <div class="solution-card-icon">🎥</div>
                 </div>
@@ -934,10 +952,11 @@
                         <li>Auto-tracking & whiteboard detection</li>
                         <li>Voice-activated camera switching</li>
                     </ul>
+                    <span class="learn-more">Learn more →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="solution-card">
+            <a href="stream-deck.html" class="solution-card">
                 <div class="solution-card-image" style="background-image: url('https://education.auburn.edu/curriculum-and-teaching/_assets/images/CNT-Banner.png');">
                     <div class="solution-card-icon">🎛️</div>
                 </div>
@@ -950,10 +969,11 @@
                         <li>Video conferencing quick-launch</li>
                         <li>Integrated help request</li>
                     </ul>
+                    <span class="learn-more">Learn more →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="solution-card">
+            <a href="cloud-recording.html" class="solution-card">
                 <div class="solution-card-image" style="background-image: url('https://education.auburn.edu/eflt/_assets/images/ELFT-Banner.jpg');">
                     <div class="solution-card-icon">☁️</div>
                 </div>
@@ -966,10 +986,11 @@
                         <li>Direct LMS integration</li>
                         <li>Intelligent tiered storage</li>
                     </ul>
+                    <span class="learn-more">Learn more →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="solution-card">
+            <a href="gameday-environment.html" class="solution-card">
                 <div class="solution-card-image" style="background-image: url('https://www.auburn.edu/administration/facilities/images/buildings/AA_T0501_1.jpg');">
                     <div class="solution-card-icon">🏟️</div>
                 </div>
@@ -982,10 +1003,11 @@
                         <li>Enhanced tailgate area connectivity</li>
                         <li>Campus-wide event coordination</li>
                     </ul>
+                    <span class="learn-more">Learn more →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="solution-card">
+            <a href="qsys-ecosystem.html" class="solution-card">
                 <div class="solution-card-image" style="background-image: url('https://education.auburn.edu/kinesiology/_assets/images/20221202_MLB_7533.jpg');">
                     <div class="solution-card-icon">🔊</div>
                 </div>
@@ -998,10 +1020,11 @@
                         <li>Remote management</li>
                         <li>Unified control system</li>
                     </ul>
+                    <span class="learn-more">Learn more →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="solution-card">
+            <a href="people-analytics.html" class="solution-card">
                 <div class="solution-card-image" style="background-image: url('https://education.auburn.edu/serc/_assets/images/SERC-Banner-2.png');">
                     <div class="solution-card-icon">📊</div>
                 </div>
@@ -1014,8 +1037,9 @@
                         <li>FERPA compliant design</li>
                         <li>Gameday crowd optimization</li>
                     </ul>
+                    <span class="learn-more">Learn more →</span>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Recording Pipeline - Auburn University Production Enhancement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --auburn-navy: #03244d;
+            --auburn-orange: #DD550C;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; color: var(--gray-800); background: var(--gray-50); }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; background: var(--white); padding: 1rem 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+        .nav-logo img { height: 45px; }
+        .nav-logo-text { display: flex; flex-direction: column; }
+        .nav-logo-title { font-weight: 700; font-size: 1.1rem; color: var(--auburn-navy); line-height: 1.2; }
+        .nav-logo-subtitle { font-size: 0.7rem; color: var(--auburn-orange); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--auburn-orange); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .back-link:hover { color: var(--auburn-navy); }
+
+        .hero { background: linear-gradient(135deg, var(--auburn-navy) 0%, rgba(3,36,77,0.9) 100%); color: var(--white); padding: 8rem 2rem 4rem; text-align: center; }
+        .hero-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+        .content { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 { font-size: 1.75rem; color: var(--auburn-navy); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--auburn-orange); display: inline-block; }
+        .section p { color: var(--gray-700); margin-bottom: 1rem; font-size: 1.05rem; }
+
+        .pipeline-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .pipeline-step {
+            flex: 1;
+            min-width: 150px;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .pipeline-step::after {
+            content: '→';
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--auburn-orange);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .pipeline-step:last-child::after { display: none; }
+
+        .pipeline-step .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .pipeline-step .label { font-weight: 600; color: var(--auburn-navy); font-size: 0.9rem; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+        .feature-card { background: var(--white); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-left: 4px solid var(--auburn-orange); }
+        .feature-card h3 { color: var(--auburn-navy); font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--gray-600); font-size: 0.9rem; margin-bottom: 0; }
+
+        .benefits-list { list-style: none; margin-top: 1rem; }
+        .benefits-list li { padding: 0.75rem 0; padding-left: 2rem; position: relative; color: var(--gray-700); }
+        .benefits-list li::before { content: '✓'; position: absolute; left: 0; color: var(--auburn-orange); font-weight: 700; font-size: 1.1rem; }
+
+        .footer { background: var(--auburn-navy); color: var(--white); padding: 2rem; text-align: center; }
+        .footer a { color: var(--auburn-orange); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .pipeline-flow { flex-direction: column; }
+            .pipeline-step::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Auburn_Tigers_logo.svg/1200px-Auburn_Tigers_logo.svg.png" alt="Auburn Tigers">
+                <div class="nav-logo-text">
+                    <span class="nav-logo-title">Production Enhancement</span>
+                    <span class="nav-logo-subtitle">Proposal 2026</span>
+                </div>
+            </a>
+            <a href="index.html#solutions" class="back-link">← Back to Solutions</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-icon">☁️</div>
+        <h1>Cloud Recording Pipeline</h1>
+        <p>Automated capture, processing, and distribution to approved platforms with AI-powered enhancements.</p>
+    </section>
+
+    <div class="content">
+        <div class="section">
+            <h2>Overview</h2>
+            <p>The Cloud Recording Pipeline automates the entire lecture capture workflow—from initial recording through processing, captioning, and delivery to students. This hands-off approach ensures every lecture is captured, enhanced, and made available without requiring faculty intervention.</p>
+            <p>By leveraging cloud infrastructure, the system scales effortlessly to handle recordings from hundreds of classrooms simultaneously while providing enterprise-grade reliability and security.</p>
+        </div>
+
+        <div class="section">
+            <h2>Recording Workflow</h2>
+            <div class="pipeline-flow">
+                <div class="pipeline-step">
+                    <div class="icon">📅</div>
+                    <div class="label">Scheduled Capture</div>
+                </div>
+                <div class="pipeline-step">
+                    <div class="icon">⬆️</div>
+                    <div class="label">Auto Upload</div>
+                </div>
+                <div class="pipeline-step">
+                    <div class="icon">🤖</div>
+                    <div class="label">AI Processing</div>
+                </div>
+                <div class="pipeline-step">
+                    <div class="icon">📝</div>
+                    <div class="label">Captioning</div>
+                </div>
+                <div class="pipeline-step">
+                    <div class="icon">📚</div>
+                    <div class="label">LMS Delivery</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Schedule-Based Recording</h3>
+                    <p>Recordings start and stop automatically based on course schedules synced from the university's scheduling system.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>AI Captioning</h3>
+                    <p>Machine learning generates accurate captions with 99%+ accuracy, supporting accessibility requirements and searchability.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Direct LMS Integration</h3>
+                    <p>Processed recordings automatically appear in Canvas course pages, linked to the correct section and date.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Intelligent Storage</h3>
+                    <p>Tiered storage automatically moves older recordings to cost-effective archive storage while keeping recent content readily accessible.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multi-Camera Sync</h3>
+                    <p>Automatically synchronizes and combines feeds from multiple cameras into a single cohesive recording.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Content Indexing</h3>
+                    <p>AI analyzes video content to create searchable indexes, allowing students to jump to specific topics within lectures.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Benefits</h2>
+            <ul class="benefits-list">
+                <li>Zero faculty effort required after initial setup</li>
+                <li>Recordings available to students within hours of class ending</li>
+                <li>ADA-compliant captions generated automatically</li>
+                <li>Searchable transcripts enhance study and review</li>
+                <li>Secure cloud storage with redundancy and backup</li>
+                <li>Analytics on viewing patterns and engagement</li>
+                <li>Supports flipped classroom and hybrid teaching models</li>
+                <li>Integrates with Panopto, Kaltura, or other video platforms</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Integration</h2>
+            <p>The Cloud Recording Pipeline integrates with AI Teaching Cameras for video capture, Q-SYS for scheduling and control triggers, and the university's Canvas LMS for content delivery. All data transfers are encrypted and compliant with FERPA requirements for student privacy.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><a href="index.html">← Return to Main Proposal</a></p>
+    </footer>
+</body>
+</html>
