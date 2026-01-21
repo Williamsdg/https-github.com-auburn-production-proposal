@@ -789,6 +789,186 @@
             color: var(--gray-500);
         }
 
+        /* Stakeholder Benefits */
+        .stakeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stakeholder-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .stakeholder-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .stakeholder-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stakeholder-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+            margin-bottom: 1rem;
+        }
+
+        .stakeholder-card ul {
+            list-style: none;
+        }
+
+        .stakeholder-card li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .stakeholder-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--auburn-orange);
+            font-weight: 700;
+        }
+
+        /* Success Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .metric-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .metric-category {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--auburn-orange);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--auburn-orange);
+        }
+
+        .metric-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            display: block;
+            color: var(--white);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-target {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+
+        /* Next Steps */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .step-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: var(--auburn-orange);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .step-content h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--auburn-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-timeline {
+            display: inline-block;
+            background: var(--gray-100);
+            color: var(--auburn-navy);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .stakeholder-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .steps-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stakeholder-grid {
+                grid-template-columns: 1fr;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, var(--auburn-orange) 0%, var(--auburn-burnt-orange) 100%);
@@ -1940,6 +2120,219 @@
                 <div class="partner-card">
                     <h4>Panasonic / AVer</h4>
                     <p>AI-powered PTZ camera systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholder Benefits Section -->
+    <section id="stakeholders" class="section section-full" style="background: var(--gray-100);">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Stakeholder Benefits</h2>
+                <p>How this initiative delivers value across the Auburn community</p>
+            </div>
+            <div class="stakeholder-grid">
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🎓</div>
+                    <h3>Students</h3>
+                    <ul>
+                        <li>Access lecture recordings anytime, anywhere</li>
+                        <li>Auto-generated captions improve accessibility</li>
+                        <li>Better audio/video quality in classrooms</li>
+                        <li>Modern collaboration spaces for group work</li>
+                        <li>Enhanced gameday experience with improved AV</li>
+                        <li>Reduced crowding through real-time occupancy info</li>
+                    </ul>
+                </div>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">👨‍🏫</div>
+                    <h3>Faculty</h3>
+                    <ul>
+                        <li>One-touch recording with Stream Deck simplicity</li>
+                        <li>No camera operator needed - AI handles tracking</li>
+                        <li>Automatic upload to LMS after class</li>
+                        <li>Reduced "first 5 minutes" technology delays</li>
+                        <li>Consistent experience across all classrooms</li>
+                        <li>Focus on teaching, not troubleshooting AV</li>
+                    </ul>
+                </div>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🏈</div>
+                    <h3>Athletics</h3>
+                    <ul>
+                        <li>SEC Network-ready production infrastructure</li>
+                        <li>60% faster gameday setup times</li>
+                        <li>Broadcast-quality content for social media</li>
+                        <li>Enhanced recruiting visit experiences</li>
+                        <li>Improved crowd management and safety</li>
+                        <li>New revenue opportunities from media production</li>
+                    </ul>
+                </div>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🔧</div>
+                    <h3>IT & AV Staff</h3>
+                    <ul>
+                        <li>40% reduction in support tickets</li>
+                        <li>Remote troubleshooting capabilities</li>
+                        <li>Standardized platform reduces training burden</li>
+                        <li>Proactive monitoring catches issues early</li>
+                        <li>Centralized management for all campus AV</li>
+                        <li>Career growth with modern technology skills</li>
+                    </ul>
+                </div>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🏛️</div>
+                    <h3>Administration</h3>
+                    <ul>
+                        <li>Data-driven facility planning decisions</li>
+                        <li>Improved accessibility compliance posture</li>
+                        <li>Enhanced recruitment appeal for prospective students</li>
+                        <li>Reduced operational costs over time</li>
+                        <li>Competitive positioning vs peer institutions</li>
+                        <li>Emergency preparedness improvements</li>
+                    </ul>
+                </div>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">👪</div>
+                    <h3>Visitors & Fans</h3>
+                    <ul>
+                        <li>Improved wayfinding on gamedays</li>
+                        <li>Better audio quality throughout stadium</li>
+                        <li>Real-time parking and crowd information</li>
+                        <li>Enhanced safety through mass notification</li>
+                        <li>Modern digital signage for information</li>
+                        <li>Premium gameday atmosphere</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Metrics Section -->
+    <section id="metrics" class="section section-full" style="background: var(--auburn-navy);">
+        <div class="section-inner">
+            <div class="section-header section-header-light">
+                <h2>Success Metrics & KPIs</h2>
+                <p>How we'll measure the impact of this initiative</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-category">Classroom Technology</div>
+                    <div class="metric-item">
+                        <span class="metric-label">Lecture capture adoption rate</span>
+                        <span class="metric-target">Target: 80%+ of eligible courses</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">AV support tickets per classroom</span>
+                        <span class="metric-target">Target: 40% reduction Year 1</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Faculty satisfaction score</span>
+                        <span class="metric-target">Target: 4.5/5.0 or higher</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Average class start delay</span>
+                        <span class="metric-target">Target: Under 2 minutes</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-category">Gameday Operations</div>
+                    <div class="metric-item">
+                        <span class="metric-label">Pre-game setup time</span>
+                        <span class="metric-target">Target: 60% reduction</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Broadcast-quality productions</span>
+                        <span class="metric-target">Target: 100% of home events</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Fan experience rating</span>
+                        <span class="metric-target">Target: Top 25% in SEC</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Emergency notification reach</span>
+                        <span class="metric-target">Target: 95%+ venue coverage</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-category">Operational Efficiency</div>
+                    <div class="metric-item">
+                        <span class="metric-label">Energy cost per building</span>
+                        <span class="metric-target">Target: 15% reduction</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">System uptime</span>
+                        <span class="metric-target">Target: 99.5%+ availability</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Remote issue resolution</span>
+                        <span class="metric-target">Target: 70% without site visit</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Staff training completion</span>
+                        <span class="metric-target">Target: 100% within 90 days</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps Section -->
+    <section id="next-steps" class="section section-full">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>Next Steps</h2>
+                <p>A clear path forward from proposal to implementation</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Stakeholder Alignment</h4>
+                        <p>Present proposal to key decision-makers across Athletics, Academic Affairs, IT, and Facilities. Gather feedback and refine scope based on priorities.</p>
+                        <div class="step-timeline">Weeks 1-2</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Site Assessment</h4>
+                        <p>Conduct detailed infrastructure evaluation of priority buildings, stadium, and network capacity. Identify any prerequisites or remediation needed.</p>
+                        <div class="step-timeline">Weeks 3-6</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Pilot Program Design</h4>
+                        <p>Select 3-5 representative spaces for proof of concept. Define success criteria and evaluation methodology for pilot phase.</p>
+                        <div class="step-timeline">Weeks 7-8</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>RFP Development</h4>
+                        <p>Create detailed specifications and competitive bid documents. Identify qualified integrators with higher education and SEC venue experience.</p>
+                        <div class="step-timeline">Weeks 9-12</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Vendor Selection</h4>
+                        <p>Evaluate proposals, conduct reference checks, and negotiate contracts. Select primary integrator and technology partners.</p>
+                        <div class="step-timeline">Weeks 13-16</div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h4>Project Kickoff</h4>
+                        <p>Finalize project charter, governance structure, and communication plan. Begin Phase 1 implementation with pilot locations.</p>
+                        <div class="step-timeline">Week 17+</div>
+                    </div>
                 </div>
             </div>
         </div>
